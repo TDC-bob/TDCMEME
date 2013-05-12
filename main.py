@@ -11,7 +11,7 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 # coding=utf-8
-import mizfile, logging, github
+import mizfile, logging
 from os import listdir
 from os.path import join
 from _logging import mkLogger, logged
