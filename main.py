@@ -27,6 +27,17 @@ testMissionFileWrite = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCM
 testMissionDiff =r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission_diff.txt"
 
 def main():
+    # Build files list
+    logger.info("Building sample mission files list")
+    for file in mizFiles:
+        logger.debug("".join(["Found files: ", file]))
+        instance = mizfile.MizFile(file)
+        instance.check()
+        instance.decompact()
+        instance.recompact()
+        instance.delete_temp_dir()
+
+    return
     p = _slpp.SLPP()
 
     with open(testMissionFileWrite, mode="w", encoding="UTF-8") as file_out:
@@ -39,13 +50,6 @@ def main():
 
     print(dict_in == dict_out)
     return
-    # Build files list
-    logger.info("Building sample mission files list")
-    for file in mizFiles:
-        logger.debug("".join(["Found files: ", file]))
-        instance = mizfile.MizFile(file)
-        instance.check()
-        instance.decompact()
 
 ##    t = mizfile.MizFile(mizFile1, "tmp")
 
