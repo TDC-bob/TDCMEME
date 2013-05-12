@@ -13,7 +13,7 @@
 # coding=utf-8
 
 
-import logging, makeTemp
+import logging, makeTemp, mission
 from _logging import mkLogger, logged
 logger = mkLogger(__name__, logging.DEBUG )
 
@@ -25,6 +25,12 @@ import os, shutil, zipfile, Exceptions
 ##import string, zipfile, Exceptions
 
 class MizFile:
+    """
+    Représente un fichier *.miz
+
+    Permet de décompresser, manipuler puis recompresser le fichier pour édition
+    Effectue quelques vérifications de bases quant à l'intégrité du fichier *.miz
+    """
     @logged
     def __init__(self, path_to_file, temp_dir=None):
         self.logger.info("Initializing MizFile({},{})".format(path_to_file,temp_dir))
@@ -49,6 +55,11 @@ class MizFile:
 
     @logged
     def check(self):
+        """
+        Vérifie:
+            1° l'existence
+            2° l'intégrité du fichier ZIP (MIZ)
+        """
         self.logger.info("runing sanity checks")
         self.logger.debug("checking for existence ...")
         if not os.path.exists(self.path):
@@ -69,16 +80,21 @@ class MizFile:
 
     @logged
     def decompact(self):
+        """
+        Extrait les fichiers contenus dans le fichier MIZ
+
+        Les fichiers sont extraits dans un répertoire temporaire (self.temp_dir)
+        se trouvant (par défaut) dans le même répertoire que le fichier MIZ
+        """
         with zipfile.ZipFile(self.path) as zip_file:
             try:
                 zip_content = zip_file.infolist()
-                self.files_in_zip = [f.filename for f in zip_content]
+                self.files_in_zip = [f.filename for f in zip_content] # files_in_zip = list(str)
                 self.logger.debug("contenu du fichier zip: {}".format(", ".join(self.files_in_zip)))
                 for item in zip_content:
                     # Je n'utilise pas ZipFile.extractall() parce que ça pourrait potentiellement être une faille de sécurité
                     # (extraction en dehors du répertoire qui m'intéresse)
                     try:
-                        self.logger.info("Compress type: {}".format(item.compress_type))
                         zip_file.extract(item, self.temp_dir)
                         self.logger.debug('extraction OK: {}'.format(item.filename))
                     except RuntimeError:
@@ -93,19 +109,47 @@ class MizFile:
         self.logger.info("ZIP file content: {}".format(str(filelist)))
 
     @logged
-    def recompact(self):
-        self.out_mizFile = os.path.join(self.folder, "".join([self.filename,"_out",self.ext]))
-        self.logger.info("Fichier de sortie: {}".format(self.out_mizFile))
-        with zipfile.ZipFile(self.out_mizFile, mode='w', compression=8) as zip_file:
+    def recompact(self, folder_to_extract_to=None, out_zip_file=None):
+        """
+        Recrée un fichier MIZ sur base du contenu du répertoire temporaire
+
+        La destination par défaut est un dossier TDCMEME créé juste à côté du
+        fichier MIZ originel
+        """
+        # check for TDCMEME folder existence
+        if not folder_to_extract_to:
+            folder_to_extract_to = os.path.join(self.folder,"TDCMEME")
+        self.logger.debug("dossier de sortie: {}".format(folder_to_extract_to))
+        if not os.path.exists(folder_to_extract_to):
+            self.logger.debug("le dossier de sortie n'existe pas, création")
+            try:
+                os.mkdir(folder_to_extract_to)
+            except OSError:
+                raise Exceptions.Error("Erreur lors de la création du dossier de sortie", "Impossible de créer le dossier suivant: {}".format(folder_to_extract_to), self.logger)
+        self.logger.info("création du fichier zip de sortie")
+        if not out_zip_file:
+            out_zip_file = self.basename
+        self.out_zip_file = os.path.join(folder_to_extract_to,out_zip_file)
+        self.logger.debug("fichier de sortie: {}".format(out_zip_file))
+        with zipfile.ZipFile(self.out_zip_file, mode='w', compression=8) as zip_file:
             for f in self.files_in_zip:
                 full_path_to_file = os.path.join(self.temp_dir,f)
                 zip_file.write(full_path_to_file,arcname=f)
+        self.logger.debug("fichier zip en sortie créé avec succès")
 
+    @logged
     def delete_temp_dir(self):
+        self.logger.info("suppression du répertoire temporaire")
         try:
             shutil.rmtree(self.temp_dir)
         except:
             raise Exceptions.Error("Impossiblede supprimer le répertoire temporaire","Impossible de supprimer le répertoire temporraire suivant: {}".format(self.temp_dir))
+        self.logger.debug("répertoire temporaire supprimé")
+
+    @logged
+    def parse_mission(self):
+        self.mission_file = os.path.join(self.temp_dir,"mission")
+        return mission.Mission(self.mission_file)
 
 
 
