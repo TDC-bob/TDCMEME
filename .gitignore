@@ -36,3 +36,6 @@ nosetests.xml
 
 config
 /missions
+__pycache__
+*.log
+*.~py
