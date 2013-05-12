@@ -53,6 +53,9 @@ class MizFile:
             self.temp_dir = temp_dir
         self.logger.debug("temporary directory for this MIZ will be: {}".format(self.temp_dir))
 
+        self.flat = False
+        self.checked = False
+
     @logged
     def check(self):
         """
@@ -77,6 +80,7 @@ class MizFile:
             raise Exceptions.Error("Impossible d'accéder au fichier", "Erreur fatale pendant la décompression du fichier suivant: {} (peut-être s'agit-il d'un dossier ?)".format(self.path))
         self.logger.debug("ZIP format is correct")
         self.logger.info("all sanity checks OK")
+        self.checked = True
 
     @logged
     def decompact(self):
@@ -107,6 +111,7 @@ class MizFile:
             if not f in filelist:
                 raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier {} après extraction ({})'.format(f, self.path))
         self.logger.info("ZIP file content: {}".format(str(filelist)))
+        self.flat = True
 
     @logged
     def recompact(self, folder_to_extract_to=None, out_zip_file=None):
@@ -145,9 +150,14 @@ class MizFile:
         except:
             raise Exceptions.Error("Impossiblede supprimer le répertoire temporaire","Impossible de supprimer le répertoire temporraire suivant: {}".format(self.temp_dir))
         self.logger.debug("répertoire temporaire supprimé")
+        self.flat = False
 
     @logged
     def parse_mission(self):
+        if not self.checked:
+            self.check()
+        if not self.flat:
+            self.decompact()
         self.mission_file = os.path.join(self.temp_dir,"mission")
         return mission.Mission(self.mission_file)
 

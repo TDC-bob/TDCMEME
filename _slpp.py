@@ -68,8 +68,8 @@ class SLPP:
         ce qui permet de l'utiliser dans une boucle.
         """
         if self.at < self.len - 1:
-            if self.at != 0:
-                self.fallback(100 / (self.len / self.at))
+##            if self.at != 0:
+##                self.fallback(100 / (self.len / self.at))
             self.at += 1
             self.line = self.lines[self.at]
             logger.debug("nouvelle ligne: {}".format(self.at))

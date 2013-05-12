@@ -15,11 +15,12 @@ import mizfile, logging, slpp, _slpp, filecmp, difflib
 from os import listdir
 from os.path import join
 from _logging import mkLogger, logged
-logger = mkLogger(__name__, logging.DEBUG )
+logger = mkLogger(__name__, logging.INFO )
 
 mizPath1 = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee"
 mizFiles = (join(mizPath1, file) for file in listdir(mizPath1) if file[-4:] == ".miz")
 
+testMizFile1 = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\F-15C - Justice.miz"
 testMissionFile1 = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission1"
 testMissionFile2 = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission2"
 testMissionFile3 = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission3"
@@ -27,6 +28,11 @@ testMissionFileWrite = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCM
 testMissionDiff =r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission_diff.txt"
 
 def main():
+    MIZ = mizfile.MizFile(testMizFile1)
+    mis = MIZ.parse_mission()
+    logger.info(str(mis))
+    return
+
     # Build files list
     logger.info("Building sample mission files list")
     for file in mizFiles:
