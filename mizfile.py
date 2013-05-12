@@ -72,58 +72,40 @@ class MizFile:
         with zipfile.ZipFile(self.path) as zip_file:
             try:
                 zip_content = zip_file.infolist()
-                self.logger.debug("contenu du fichier zip: {}".format(", ".join([f.filename for f in zip_content])))
+                self.files_in_zip = [f.filename for f in zip_content]
+                self.logger.debug("contenu du fichier zip: {}".format(", ".join(self.files_in_zip)))
                 for item in zip_content:
                     # Je n'utilise pas ZipFile.extractall() parce que ça pourrait potentiellement être une faille de sécurité
                     # (extraction en dehors du répertoire qui m'intéresse)
                     try:
+                        self.logger.info("Compress type: {}".format(item.compress_type))
                         zip_file.extract(item, self.temp_dir)
                         self.logger.debug('extraction OK: {}'.format(item.filename))
                     except RuntimeError:
                         raise Exceptions.CouldNotExtract(self.path, item, self.logger)
             except zipfile.BadZipFile:
                 raise Exceptions.Error("erreur lors de la décompression du fichier MIZ","Chemin vers le fichier: {}".format(self.path), self.logger)
-            self.__parse_content()
-
-    def __parse_content(self):
         self.logger.debug("parsing content ...")
         filelist = os.listdir(self.temp_dir)
-        if not "mission" in filelist:
-            raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier "mission" après extraction ({})'.format(self.path))
-        if not "options" in filelist:
-            raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier "options" après extraction ({})'.format(self.path))
-        if not "warehouses" in filelist:
-            raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier "warehouses" après extraction ({})'.format(self.path))
+        for f in ["mission","options","warehouses"]:
+            if not f in filelist:
+                raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier {} après extraction ({})'.format(f, self.path))
         self.logger.info("ZIP file content: {}".format(str(filelist)))
-        self.zip_content = filelist
+
+    @logged
+    def recompact(self):
+        self.out_mizFile = os.path.join(self.folder, "".join([self.filename,"_out",self.ext]))
+        self.logger.info("Fichier de sortie: {}".format(self.out_mizFile))
+        with zipfile.ZipFile(self.out_mizFile, mode='w', compression=8) as zip_file:
+            for f in self.files_in_zip:
+                full_path_to_file = os.path.join(self.temp_dir,f)
+                zip_file.write(full_path_to_file,arcname=f)
+
+    def delete_temp_dir(self):
+        try:
+            shutil.rmtree(self.temp_dir)
+        except:
+            raise Exceptions.Error("Impossiblede supprimer le répertoire temporaire","Impossible de supprimer le répertoire temporraire suivant: {}".format(self.temp_dir))
 
 
-##    def __temp(self):
-##        try:
-##            with ZipFile(self.path) as file:
-##                corruptedFile = file.testzip()
-##                if corruptedFile:
-##                    raise Exceptions.InvalidMizFile(self.path, self.logger, "fichier miz corrompu, impossible de l'ouvrir en tant que fichier zip")
-####                self.logger.debug("rÃ©cupÃ©ration de l'objet infolist() Ã  partir de l'objet zipfile()")
-##                infoList = file.infolist()
-##                for item in infoList:
-##                    # Je n'utilise pas ZipFile.extractall() parce que Ã§a pourrait potentiellement Ãªtre une faille de sÃ©curitÃ©
-##                    # (extraction en dehors du rÃ©pertoire qui m'intÃ©resse)
-##                    try:
-##                        file.extract(item, tempDir)
-##                        ##self.logger.debug('extraction de "{}" rÃ©ussie'.format(item.filename))
-##                    except RuntimeError:
-##                        raise Exceptions.CouldNotExtract(self.path, item, self.logger)
-##                ##self.logger.debug("objet infolist rÃ©cupÃ©rÃ©, vÃ©rification du contenu du fichier MIZ")
-##                # Fichier mission
-##                self.mission = abspath(join(tempDir, "mission"))
-##                if not exists(self.mission):
-##                    raise Exceptions.MissingObjectInZipFile(self.path, "mission", self.logger)
-##                self.options = abspath(join(tempDir, "options"))
-##                if not exists(self.options):
-##                    raise Exceptions.MissingObjectInZipFile(self.path, "options", self.logger)
-##                self.warehouses = abspath(join(tempDir, "warehouses"))
-##                if not exists(self.warehouses):
-##                    self.logger.warning("ce fichier MIZ ne contient pas de fichier warehouses")
-##        except BadZipFile:
-##            raise Exceptions.InvalidMizFile(self.path, self.logger, "le fichier MIZ est corrompu")
+
