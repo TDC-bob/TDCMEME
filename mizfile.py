@@ -63,7 +63,7 @@ class MizFile:
         except zipfile.BadZipFile:
             raise Exceptions.InvalidMizFile(self.path, self.logger, "le fichier MIZ est corrompu")
         except PermissionError:
-            raise Exceptions.Error("Could not access file", "Fatal error while trying to unzip following file: {} (could be it's a folder, or it's read-protected)".format(self.path))
+            raise Exceptions.Error("Impossible d'accéder au fichier", "Erreur fatale pendant la décompression du fichier suivant: {} (peut-être s'agit-il d'un dossier ?)".format(self.path))
         self.logger.debug("ZIP format is correct")
         self.logger.info("all sanity checks OK")
 
