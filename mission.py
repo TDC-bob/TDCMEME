@@ -11,10 +11,25 @@
 #!/usr/bin/env python
 
 from _logging import logged, mkLogger
-import _slpp, logging, Exceptions
+import _slpp, logging, Exceptions, mizfile, os.path
 mkLogger(__name__,logging.DEBUG)
 
 class Mission():
+    def __init__(self, path_to_miz_file, temp_dir=None):
+        self.path_to_miz_file = path_to_miz_file
+        self.temp_dir = temp_dir
+
+    def __enter__(self):
+        self.mission_object = UnsecureMission(self.path_to_miz_file,self.temp_dir)
+        return self.mission_object
+
+    def __exit__(self, exc_type, exc_value, exc_traceback):
+        if type is not None:
+            pass # exception occured
+        self.mission_object.finalize()
+        self.mission_object.close()
+
+class UnsecureMission():
     """
     Représente un fichier mission
 
@@ -24,13 +39,23 @@ class Mission():
     """
 
     @logged
-    def __init__(self, path_to_mission_file):
-        self.logger.info("instanciation d'un nouvel object mission: {}".format(path_to_mission_file))
+    def __init__(self, path_to_miz_file, temp_dir=None):
+        self.mizfile = mizfile.MizFile(path_to_miz_file)
+        self.mizfile.check()
+        self.mizfile.decompact()
+        self.path_to_mission_file = os.path.join(self.mizfile.temp_dir,"mission")
+        self.logger.info("instanciation d'un nouvel object mission: {}".format(self.path_to_mission_file))
         parser = _slpp.SLPP()
-        with open(path_to_mission_file,mode="r",encoding="UTF-8") as file:
+        with open(self.path_to_mission_file,mode="r",encoding="UTF-8") as file:
             self.raw_text = file.read()
         self.d = parser.decode(self.raw_text)
         self.check()
+
+    def finalize(self):
+        pass
+
+    def close(self):
+        self.mizfile.delete_temp_dir()
 
     def __level1(self):
         return ('"usedModules"',)

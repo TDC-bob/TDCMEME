@@ -11,7 +11,7 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 # coding=utf-8
-import mizfile, logging, slpp, _slpp, filecmp, difflib
+import mizfile, logging, slpp, _slpp, filecmp, difflib, mission
 from os import listdir
 from os.path import join
 from _logging import mkLogger, logged
@@ -28,8 +28,10 @@ testMissionFileWrite = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCM
 testMissionDiff =r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.git\missions\1.2.4\BenJee\mission_diff.txt"
 
 def main():
-    MIZ = mizfile.MizFile(testMizFile1)
-    mis = MIZ.parse_mission()
+    with mission.Mission(testMizFile1) as mis:
+        print(mis.short_summary())
+##    MIZ = mizfile.MizFile(testMizFile1)
+##    mis = MIZ.parse_mission()
 ##    logger.info(str(mis))
     return
 

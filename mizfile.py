@@ -52,7 +52,6 @@ class MizFile:
         else:
             self.temp_dir = temp_dir
         self.logger.debug("temporary directory for this MIZ will be: {}".format(self.temp_dir))
-
         self.flat = False
         self.checked = False
 
