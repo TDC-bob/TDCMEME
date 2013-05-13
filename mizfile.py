@@ -80,6 +80,7 @@ class MizFile:
         self.logger.debug("ZIP format is correct")
         self.logger.info("all sanity checks OK")
         self.checked = True
+        return self
 
     @logged
     def decompact(self):
@@ -111,6 +112,7 @@ class MizFile:
                 raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier {} après extraction ({})'.format(f, self.path))
         self.logger.info("ZIP file content: {}".format(str(filelist)))
         self.flat = True
+        return self
 
     @logged
     def recompact(self, folder_to_extract_to=None, out_zip_file=None):

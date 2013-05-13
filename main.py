@@ -29,7 +29,7 @@ testMissionDiff =r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.
 
 def main():
     with mission.Mission(testMizFile1) as mis:
-        print(mis.short_summary())
+        pass
 ##    MIZ = mizfile.MizFile(testMizFile1)
 ##    mis = MIZ.parse_mission()
 ##    logger.info(str(mis))

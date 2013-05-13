@@ -15,12 +15,18 @@ import _slpp, logging, Exceptions, mizfile, os.path
 mkLogger(__name__,logging.DEBUG)
 
 class Mission():
+    """
+    Context-manager pour la classe __ManagedMission
+
+    Le contexte permet de s'assurer que toutes les opérations satellites sont
+    effectuées avant et après l'instanciationde l'object "Mission"
+    """
     def __init__(self, path_to_miz_file, temp_dir=None):
         self.path_to_miz_file = path_to_miz_file
         self.temp_dir = temp_dir
 
     def __enter__(self):
-        self.mission_object = UnsecureMission(self.path_to_miz_file,self.temp_dir)
+        self.mission_object = _ManagedMission(self.path_to_miz_file,self.temp_dir)
         return self.mission_object
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
@@ -29,25 +35,36 @@ class Mission():
         self.mission_object.finalize()
         self.mission_object.close()
 
-class UnsecureMission():
+class _ManagedMission():
     """
-    Représente un fichier mission
+    NE PAS INSTANCIER
 
-    Le fichier mission est lui-même contenu dans un fichier *.miz, il faut donc
-    d'abord instancier puis extraire ce dernier, fonctions accessibles via la
-    classe mizfile.MizFile
+    Cette classe représente (à bas niveau) un fichier mission, lui-même contenu
+    dans un fichier *.miz
+
+    L'abstraction permet de gérer la "table de mission", tableau lua constituant
+    la mission en elle-même. Tous les autres fichiers contenus dans le *.miz
+    (graphiques pour le briefing, fichiers sons, fichiers "options", ...) ne sont
+    pas traités ici; pour vérifier la concordance entre le tableau et le contenu
+    réel du fichier *.miz, on fera appel à l'attribut "self.miz_file.zip_content"
     """
 
     @logged
     def __init__(self, path_to_miz_file, temp_dir=None):
-        self.mizfile = mizfile.MizFile(path_to_miz_file)
-        self.mizfile.check()
-        self.mizfile.decompact()
+        self.logger.info("instanciation d'un nouvel object mission: {}".format(path_to_miz_file))
+        self.mizfile = mizfile.MizFile(path_to_miz_file).check().decompact()
+        self.logger.debug("miz_file checkée et decompressée dans: {}".format(self.mizfile.temp_dir))
         self.path_to_mission_file = os.path.join(self.mizfile.temp_dir,"mission")
-        self.logger.info("instanciation d'un nouvel object mission: {}".format(self.path_to_mission_file))
+        self.logger.debug("chemin complet vers le fichier mission: {}".format(self.path_to_mission_file))
         parser = _slpp.SLPP()
-        with open(self.path_to_mission_file,mode="r",encoding="UTF-8") as file:
-            self.raw_text = file.read()
+        try:
+            with open(self.path_to_mission_file,mode="r",encoding="UTF-8") as file:
+                self.logger.debug("lecture du contenu du fichier mission")
+                self.raw_text = file.read()
+        except:
+            Exceptions.Error("Erreur fatale lors de la lecture du fichier mission",
+                            "Impossible de lire le fichier mission suivant: {}".format(self.path_to_mission_file))
+        self.logger.debug("délégation de la table de mission au parser SLPP")
         self.d = parser.decode(self.raw_text)
         self.check()
 
@@ -58,36 +75,17 @@ class UnsecureMission():
         self.mizfile.delete_temp_dir()
 
     def __level1(self):
-        return ('"usedModules"',)
-##"groundControl"
-##"descriptionBlueTask"
-##"start_time"
-##"pictureFileNameB"
-##"currentKey"
-##"trigrules"
-##"sortie"
-##"coalitions"
-##"descriptionText"
-##"resourceCounter"
-##"theatre"
-##"needModules"
-##"map"
-##"forcedOptions"
-##"failures"
-##"result"
-##"triggers"
-##"goals"
-##"version"
-##"pictureFileNameR"
-##"descriptionRedTask"
-##"weather"
-##"coalition"
-##"trig"
-##                ]
+        return ('"usedModules"','"groundControl"','"descriptionBlueTask"',
+                '"start_time"','"pictureFileNameB"','"currentKey"','"trigrules"',
+                '"sortie"','"coalitions"','"descriptionText"','"resourceCounter"',
+                '"theatre"','"needModules"','"map"','"forcedOptions"','"failures"',
+                '"result"','"triggers"','"goals"','"version"','"pictureFileNameR"',
+                '"descriptionRedTask"','"weather"','"coalition"','"trig"')
+
 
     @logged
     def check(self):
-        self.logger.info("checking mission table consistency")
+        self.logger.info("vérification de la cohérence de la table")
         self.__check_dict(self.d, self.__level1())
 
     def __check_dict(self,d,proof):
