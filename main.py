@@ -30,7 +30,7 @@ testMissionDiff =r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEMEv2.
 def main():
     MIZ = mizfile.MizFile(testMizFile1)
     mis = MIZ.parse_mission()
-    logger.info(str(mis))
+##    logger.info(str(mis))
     return
 
     # Build files list

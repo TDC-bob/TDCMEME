@@ -55,7 +55,7 @@ class SLPP:
 
         # Si tout est en ordre, démarrage du parsing
         self.logger.debug("tout est en ordre, début du parsing")
-        result = self.section()
+        result = self.__section()
         self.logger.info("fin du décodage")
         return result
 
@@ -77,8 +77,7 @@ class SLPP:
         logger.debug("dernière ligne atteinte")
         return None
 
-    @logged
-    def section(self):
+    def __section(self):
         """
         Parse de façon réursive l'ensemble du tableau de lignes
 
@@ -241,7 +240,7 @@ class SLPP:
             if r_SecStart.match(self.line):
                 newSecName = r_SecStart.search(self.line).group("name")
                 self.logger.debug("sous-section trouvée, récursion")
-                o[newSecName] = self.section()
+                o[newSecName] = self.__section()
         #~ self.logger.error("section mal formattée: {}".format(name))
         raise Exceptions.InvalidMissionFile("", self.logger, "section mal formattée: {}, ligne {}".format(name, self.at))
 
@@ -273,7 +272,6 @@ class SLPP:
         self.logger.info("fin de l'encodage")
         return self.text
 
-    @logged
     def __encode(self, obj):
         """
         Cette fonction itère au travers du dictionnaire de données pour
