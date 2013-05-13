@@ -5,7 +5,7 @@ logger = mkLogger("EXCEPTION")
 
 class Error(Exception):
     def __init__(self, base_info="Pas d'information sur cette erreur", message="Pas de message pour cette erreur", logger=logger):
-        logger.error('''FATAL ERROR: "{}"\n\tMessage: {}'''.format(base_info, message))
+        logger.error('''FATAL ERROR: {}\n\tMessage: {}'''.format(base_info, message))
         exit(-1)
 
 

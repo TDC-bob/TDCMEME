@@ -1,3 +1,4 @@
+﻿# -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
 # Name:        module1
 # Purpose:
@@ -80,11 +81,14 @@ class _ManagedMission():
                 '"sortie"','"coalitions"','"descriptionText"','"resourceCounter"',
                 '"theatre"','"needModules"','"map"','"forcedOptions"','"failures"',
                 '"result"','"triggers"','"goals"','"version"','"pictureFileNameR"',
-                '"descriptionRedTask"','"weather"','"coalition"','"trig"')
-
+                '"descriptionRedTask"','"weather"','"coalition"','"trig"','"planteMoi"')
 
     @logged
     def check(self):
+        """
+        Compare la table de mission à une liste prédeterminée, pour vérifier la
+        présence de toutesles informations nécessaires
+        """
         self.logger.info("vérification de la cohérence de la table")
         self.__check_dict(self.d, self.__level1())
 
@@ -93,13 +97,15 @@ class _ManagedMission():
         Vérifies que le dictionnaire "d" possède toutes les clefs reprises dans "proof"
         """
         d_keys = d.keys()
-        for p in proof:
-            if not p in d_keys:
-                raise Exceptions.Error("Erreur lors de la vérification du fichier mission",
-                "Impossible de trouver la clef \"{}\" dans la table de mission".format(p), self.logger)
-
-
-
+        try:
+            for p in proof:
+                sub_dict = d[p]
+                if not p in d_keys:
+                    raise KeyError
+    ##            print(p)
+        except KeyError:
+            raise Exceptions.Error("Erreur lors de la vérification du fichier mission",
+            "impossible de trouver la clef \"{}\" dans la table de mission".format(p), self.logger)
 
     @logged
     def short_summary(self):
