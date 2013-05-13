@@ -7,7 +7,7 @@ A terme, le TDCMEMEv2 permettra la génération automatique de misisons DCS Worl
 
 Le moteur de campagne dynamique sera basé sur les idées et concepts de celui qui était présent dans Falcon 4.0, un modèle du genre.
 
-Le projet dispose déjà d'un parser Lua complet, peut lire, décomposer, re-composer et réécrire les fichiers missions de DCS World (fichiers MIZ).
+Le projet dispose déjà d'un parser Lua complet (récupéré du TDCMEMEv1), peut lire, décomposer, re-composer et réécrire les fichiers missions de DCS World (fichiers MIZ).
 
 Il lui manque la structure permettant l'édition de mission, le générateur de mission et le moteur de campagne.
 
