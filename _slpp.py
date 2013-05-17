@@ -2,6 +2,7 @@
 import re
 import Exceptions
 from _logging import logged, mkLogger
+from collections import OrderedDict
 
 logger = mkLogger(__name__)
 
@@ -183,6 +184,7 @@ class SLPP:
         """
         self.logger.debug("instanciation d'une nouvelle section")
         o = {}
+##        o = OrderedDict()
         # Identations propres à cette section
         ident = r_SecStart.search(self.line).group("spaces")
         contentIdent = "    {}".format(ident)

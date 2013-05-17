@@ -22,11 +22,15 @@ def main():
     missions_out = os.path.join(wk_dir, "missions_out")
     miz_files_in = (os.path.join(missions_in, file) for file in os.listdir(missions_in) if file[-4:] == ".miz")
     # run tests here
+    '''
+    SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
+    '''
+    input_file = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\mission"
+    output_file = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\output"
+    SLPP_test(input_file,output_file)
+    return
 
     # one test to rule them all:
-##    for file_path in miz_files_in:
-##        file_path = file_path.replace("\\","\\\\")
-##        print(file_path)
     run_on_all_files(generate_context,miz_files_in)
 
 def SLPP_test(file_in, file_out):
@@ -44,8 +48,17 @@ def SLPP_test(file_in, file_out):
 
     with open(file_out, mode="r", encoding="UTF-8") as _out:
         dict_out = p.decode(_out.read())
+    dicts_identical = (dict_in == dict_out)
+    print(dicts_identical)
+    if not dicts_identical:
+        with open(file_in) as f, open(file_out) as g:
+            flines = f.readlines()
+            glines = g.readlines()
 
-    print(dict_in == dict_out)
+            d = difflib.Differ()
+            diff = d.compare(flines, glines)
+        with open(os.path.join(os.path.dirname(file_in),"diff.txt"),mode="w") as diff_file:
+            diff_file.writelines(diff)
 
 def generate_context(file):
     with mission.Mission(file):
