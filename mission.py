@@ -81,7 +81,7 @@ class _ManagedMission():
                 '"sortie"','"coalitions"','"descriptionText"','"resourceCounter"',
                 '"theatre"','"needModules"','"map"','"forcedOptions"','"failures"',
                 '"result"','"triggers"','"goals"','"version"','"pictureFileNameR"',
-                '"descriptionRedTask"','"weather"','"coalition"','"trig"','"planteMoi"')
+                '"descriptionRedTask"','"weather"','"coalition"','"trig"')
 
     @logged
     def check(self):
