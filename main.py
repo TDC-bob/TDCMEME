@@ -36,7 +36,6 @@ def SLPP_test(file_in, file_out):
     Vérifie que le parser SLPP n'altère pas la table LUA qui lui est passée en
     entrée
 
-    BUGGED: cfr. gh-1
     '''
     p = _slpp.SLPP()
     with open(file_out, mode="w", encoding="UTF-8") as _out:
