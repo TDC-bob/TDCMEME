@@ -32,8 +32,10 @@ class Mission():
         return self.mission_object
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        if type is not None:
-            pass # exception occured
+        if exc_type is not None:
+            self.mission_object.finalize()
+            self.mission_object.close()
+
         self.mission_object.finalize()
         self.mission_object.close()
 
