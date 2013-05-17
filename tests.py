@@ -13,7 +13,7 @@ class TestGlobalFunctions(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testSLPP(self):
+    def test_gh1_SLPP_consistency_1(self):
         '''
         Verifies that the SLPP parser outputs the EXACT same output, providing
         the mission file has not been changed
