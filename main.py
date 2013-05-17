@@ -25,10 +25,8 @@ def main():
     '''
     SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
     '''
-    input_file = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\mission"
-    output_file = r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\output"
-    SLPP_test(input_file,output_file)
-    return
+    SLPP_test(r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\mission",
+            r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\output")
 
     # one test to rule them all:
     run_on_all_files(generate_context,miz_files_in)
@@ -49,16 +47,19 @@ def SLPP_test(file_in, file_out):
     with open(file_out, mode="r", encoding="UTF-8") as _out:
         dict_out = p.decode(_out.read())
     dicts_identical = (dict_in == dict_out)
-    print(dicts_identical)
-    if not dicts_identical:
+    files_identical = (open(file_in).read() == open(file_out).read())
+    print(files_identical)
+    if not files_identical:
         with open(file_in) as f, open(file_out) as g:
             flines = f.readlines()
             glines = g.readlines()
-
-            d = difflib.Differ()
-            diff = d.compare(flines, glines)
+            output = []
+            for i in range(max(len(glines),len(flines))):
+                if not glines[i] == flines[i]:
+                    output.append("+ {}".format(glines[i]))
+                    output.append("- {}".format(flines[i]))
         with open(os.path.join(os.path.dirname(file_in),"diff.txt"),mode="w") as diff_file:
-            diff_file.writelines(diff)
+            diff_file.writelines(output)
 
 def generate_context(file):
     with mission.Mission(file):

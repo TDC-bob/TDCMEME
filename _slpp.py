@@ -183,8 +183,8 @@ class SLPP:
             guillemets
         """
         self.logger.debug("instanciation d'une nouvelle section")
-        o = {}
-##        o = OrderedDict()
+##        o = {}
+        o = OrderedDict()
         # Identations propres à cette section
         ident = r_SecStart.search(self.line).group("spaces")
         contentIdent = "    {}".format(ident)
@@ -269,7 +269,7 @@ class SLPP:
         self.logger.debug("encodage des sections")
         self.__encode(obj)
         self.logger.debug("écriture de la dernière ligne")
-        self.text = ''.join([self.text, '} -- end of mission'])
+        self.text = ''.join([self.text, '} -- end of mission\n'])
         self.logger.debug("renvoi du texte créé")
         self.logger.info("fin de l'encodage")
         return self.text
@@ -298,7 +298,8 @@ class SLPP:
                 s = ''.join([ident, "[", key, "]", " = ", obj[key], ",\n"])
                 self.logger.debug('la ligne ajoutée au fichier sera: "{}"'.format(s))
                 self.text = ''.join([self.text, s])
-            elif type(obj[key]) == dict:
+##            elif type(obj[key]) == dict:
+            elif type(obj[key]) == OrderedDict:
                 self.logger.debug("l'objet est une section")
                 s = ''.join([ident, "[", str(key), "]", " = \n", ident, "{\n"])
                 self.logger.debug('début de section à ajouter au fichier: "{}"'.format(s))

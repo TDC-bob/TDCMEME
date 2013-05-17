@@ -14,17 +14,19 @@ class TestGlobalFunctions(unittest.TestCase):
         pass
 
     def testSLPP(self):
+        '''
+        Verifies that the SLPP parser outputs the EXACT same output, providing
+        the mission file has not been changed
+
+        Fixes gh-1
+        '''
         file_in = os.path.join(os.getcwd(),r"slpp tests\mission")
         file_out = os.path.join(os.getcwd(),r"slpp tests\output")
         p = _slpp.SLPP()
         with open(file_out, mode="w", encoding="UTF-8") as _out:
             with open(file_in, encoding="UTF-8") as _in:
-                dict_in = p.decode(_in.read())
-                _out.write(p.encode(dict_in))
-
-        with open(file_out, mode="r", encoding="UTF-8") as _out:
-            dict_out = p.decode(_out.read())
-        self.assertTrue(dict_in == dict_out)
+                _out.write(p.encode(p.decode(_in.read())))
+        self.assertTrue(open(file_in).read() == open(file_out).read())
 
 
 
