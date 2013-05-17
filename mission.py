@@ -33,9 +33,7 @@ class Mission():
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
         if exc_type is not None:
-            self.mission_object.finalize()
-            self.mission_object.close()
-
+            pass
         self.mission_object.finalize()
         self.mission_object.close()
 
@@ -108,7 +106,8 @@ class _ManagedMission():
     ##            print(p)
         except KeyError:
             raise Exceptions.Error("Erreur lors de la vérification du fichier mission",
-            "impossible de trouver la clef \"{}\" dans la table de mission".format(p), self.logger)
+            "impossible de trouver la clef \"{}\" dans la table de mission: {}"
+            .format(p, os.path.dirname(self.path_to_mission_file)), self.logger)
 
     @logged
     def short_summary(self):
