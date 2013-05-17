@@ -65,6 +65,7 @@ class MizFile:
         self.logger.info("runing sanity checks")
         self.logger.debug("checking for existence ...")
         if not os.path.exists(self.path):
+            raise Exceptions.Error("File does not exist",self.path, self.logger)
             raise Exceptions.FileDoesNotExist(self.path,self.logger)
         self.logger.debug("files exists")
         self.logger.debug("checking for ZIP consistency ...")
