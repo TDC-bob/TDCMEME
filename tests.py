@@ -26,7 +26,8 @@ class TestGlobalFunctions(unittest.TestCase):
         with open(file_out, mode="w", encoding="UTF-8") as _out:
             with open(file_in, encoding="UTF-8") as _in:
                 _out.write(p.encode(p.decode(_in.read())))
-        self.assertTrue(open(file_in).read() == open(file_out).read())
+        with open(file_in) as f1, open(file_out) as f2:
+            self.assertTrue(f1.read() == f2.read())
 
 
 
