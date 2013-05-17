@@ -25,8 +25,8 @@ def main():
     '''
     SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
     '''
-    SLPP_test(r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\mission",
-            r"C:\Documents and Settings\owner\My Documents\BORIS\TDCMEME.git\slpp tests\output")
+    SLPP_test(os.path.join(os.getcwd(),"slpp tests\mission"),
+            os.path.join(os.getcwd(),r"slpp tests\output"))
 
     # one test to rule them all:
     run_on_all_files(generate_context,miz_files_in)
