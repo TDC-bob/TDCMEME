@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.2">
+<Document>
+  <name>DCS Georgia airfield</name>
+  <description><![CDATA[]]></description>
+  <Style id="style14">
+    <IconStyle>
+      <Icon>
+        <href></href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style11">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style9">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style15">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style8">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style17">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style18">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style12">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style5">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style4">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style2">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style10">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style3">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style6">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style16">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style7">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style20">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style13">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style19">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="style1">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Placemark>
+    <name>Batoumi</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style14</styleUrl>
+    <Point>
+      <coordinates>41.637222,41.638611,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Goudaouta</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style11</styleUrl>
+    <Point>
+      <coordinates>40.633331,43.099998,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Vaziani</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style9</styleUrl>
+    <Point>
+      <coordinates>42.243877,41.988789,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Kobuleti</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style15</styleUrl>
+    <Point>
+      <coordinates>41.775276,41.820000,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Kopitnari</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style8</styleUrl>
+    <Point>
+      <coordinates>42.531693,42.210682,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Senaki</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style17</styleUrl>
+    <Point>
+      <coordinates>42.061798,42.268768,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Soukhoumi</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style18</styleUrl>
+    <Point>
+      <coordinates>40.989151,43.007320,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Tbilissi</name>
+    <description><![CDATA[Géorgie<br>]]></description>
+    <styleUrl>#style12</styleUrl>
+    <Point>
+      <coordinates>44.792999,41.709980,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Anapa</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br><a href="http://www.google.com/search?hl=fr&amp;authuser=0&amp;q=russie+anapa&amp;cd=1&amp;cad=src:ppiwlink&amp;ei=houWUd3GN9DntQbE94G4CQ&amp;sig2=28uJBrZbCgOVNl0eRQIp-g&amp;dtab=5" target="_blank"><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=44.894922,37.316262&amp;thumb=0"></a>]]></description>
+    <styleUrl>#style5</styleUrl>
+    <Point>
+      <coordinates>37.316261,44.894920,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Guelendjik</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br><a href="http://www.google.com/search?hl=fr&amp;authuser=0&amp;q=guelendjik+russie&amp;cd=1&amp;cad=src:ppiwlink&amp;ei=k4uWUabzIsbysgaK5oGACw&amp;sig2=NAO78QIRJs-vDwan0npz1Q&amp;dtab=5" target="_blank"><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=44.555141,38.062928&amp;thumb=0"></a>]]></description>
+    <styleUrl>#style4</styleUrl>
+    <Point>
+      <coordinates>38.062927,44.555141,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Maykop</name>
+    <description><![CDATA[]]></description>
+    <styleUrl>#style2</styleUrl>
+    <Point>
+      <coordinates>38.134899,44.501301,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Krasnodar</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br><a href="http://www.google.com/search?hl=fr&amp;authuser=0&amp;q=krasnodar+russie&amp;cd=1&amp;cad=src:ppiwlink&amp;ei=rYuWUdXkCoX8sAbgqYD4Bg&amp;sig2=M8VZAkAmIuLRtw5iA25AQQ&amp;dtab=5" target="_blank"><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=45.041208,38.976446&amp;thumb=0"></a>]]></description>
+    <styleUrl>#style10</styleUrl>
+    <Point>
+      <coordinates>38.976444,45.041206,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Novorossiisk</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br><a href="http://www.google.com/search?hl=fr&amp;authuser=0&amp;q=novorossiisk&amp;cd=1&amp;cad=src:ppiwlink&amp;ei=u4uWUbWxK4nmtQaztoGwCQ&amp;sig2=SolBPNvD6ZAXTwJdsblWPA&amp;dtab=5" target="_blank"><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=44.739837,37.785431&amp;thumb=0"></a>]]></description>
+    <styleUrl>#style3</styleUrl>
+    <Point>
+      <coordinates>37.785431,44.739838,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Krymsk</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br>]]></description>
+    <styleUrl>#style6</styleUrl>
+    <Point>
+      <coordinates>37.997952,44.919189,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Naltchik</name>
+    <description><![CDATA[Kabardino-Balkarie, Russie<br>]]></description>
+    <styleUrl>#style16</styleUrl>
+    <Point>
+      <coordinates>43.602657,43.481834,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Beslan</name>
+    <description><![CDATA[Ossétie-du-Nord-Alanie, Russie<br>]]></description>
+    <styleUrl>#style7</styleUrl>
+    <Point>
+      <coordinates>44.526001,43.194790,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Sotchi</name>
+    <description><![CDATA[Kraï de Krasnodar, Russie<br><a href="http://www.google.com/search?hl=fr&amp;authuser=0&amp;q=sochi+russie&amp;cd=1&amp;cad=src:ppiwlink&amp;ei=HoyWUdamK9DIsgbRy4CYDw&amp;sig2=xB3FmJiEIN9NxX6pcfbfTw&amp;dtab=5" target="_blank"><img src="https://cbks0.google.com/cbk?output=thumbnail&amp;w=90&amp;h=68&amp;ll=43.586092,39.723095&amp;thumb=0"></a>]]></description>
+    <styleUrl>#style20</styleUrl>
+    <Point>
+      <coordinates>39.723095,43.586094,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Mozdok</name>
+    <description><![CDATA[Ossétie-du-Nord-Alanie, Russie<br>]]></description>
+    <styleUrl>#style13</styleUrl>
+    <Point>
+      <coordinates>44.651611,43.744614,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Khanskaya</name>
+    <description><![CDATA[Adyguée, Russie<br>]]></description>
+    <styleUrl>#style19</styleUrl>
+    <Point>
+      <coordinates>39.955360,44.668804,0.000000</coordinates>
+    </Point>
+  </Placemark>
+  <Placemark>
+    <name>Mineralnye Vody</name>
+    <description><![CDATA[]]></description>
+    <styleUrl>#style1</styleUrl>
+    <Point>
+      <coordinates>43.115845,44.178265,0.000000</coordinates>
+    </Point>
+  </Placemark>
+</Document>
+</kml>
