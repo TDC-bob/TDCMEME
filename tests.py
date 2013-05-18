@@ -20,8 +20,8 @@ class TestGlobalFunctions(unittest.TestCase):
 
         Fixes gh-1
         '''
-        file_in = os.path.join(os.getcwd(),r"slpp tests\mission")
-        file_out = os.path.join(os.getcwd(),r"slpp tests\output")
+        file_in = os.path.join(os.getcwd(),"slpp tests/mission")
+        file_out = os.path.join(os.getcwd(),"slpp tests/output")
         p = _slpp.SLPP()
         with open(file_out, mode="w", encoding="UTF-8") as _out:
             with open(file_in, encoding="UTF-8") as _in:
