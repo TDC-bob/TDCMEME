@@ -2,8 +2,9 @@ language: python
 python:
   - "3.3"
 # command to install dependencies
-# install:
-  # - "pip install . --use-mirrors"
-  # - "pip install -r requirements.txt --use-mirrors"
+install:
+  - python setup.py sdist --formats=zip -k
+  - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
 # command to run tests
-script: tests
+script:
+ - python tdcmeme/tests.py
