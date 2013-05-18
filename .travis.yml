@@ -7,4 +7,4 @@ install:
   - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
 # command to run tests
 script:
- - python tdcmeme/tests.py
+ - python tdcmeme-0.0.1/tests.py
