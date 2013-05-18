@@ -1,7 +1,6 @@
-TDCMEME_v2
-==========
+# TDCMEME_v2 #
 
-**Projet en construction**
+**Projet_en_construction**
 
 A terme, le TDCMEMEv2 permettra la génération automatique de misisons DCS World, liées les unes aux autres par un petit moteur de campagne dynamiques.
 
