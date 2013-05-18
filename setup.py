@@ -28,7 +28,7 @@ setup(name='tdcmeme',
       author='bob Daribouca',
       license='CC BY-NC-SA 3.0',
       copyright='Bob Daribouca',
-      py_modules=['_logging','_slpp','Exceptions','main','makeTemp','mission','mizFile','tests'],
+      py_modules=['_logging','_slpp','Exceptions','main','makeTemp','mission','mizfile','tests'],
       packages=['campaign'],
       data_files=[('slpp tests', ['slpp tests/mission'])]
 
