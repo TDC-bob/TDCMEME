@@ -11,4 +11,4 @@ script: nosetests
 branches:
   only:
     - master
-	- /^build-.*$/
+#	- /^build-.*$/
