@@ -38,7 +38,6 @@ nosetests.xml
 config
 /missions
 /missions_in
-/slpp tests/output
 __pycache__
 *.log
 *.~py
