@@ -32,15 +32,15 @@ def main():
 ##    dulwich.tests.test_suite()
 ##    return
     wk_dir = os.getcwd()
-    missions_in = os.path.join(wk_dir,"missions_in")
-    missions_out = os.path.join(wk_dir, "missions_out")
+    missions_in = os.path.normcase(os.path.join(wk_dir,"missions_in"))
+    missions_out = os.path.normcase(os.path.join(wk_dir, "missions_out"))
     miz_files_in = (os.path.join(missions_in, file) for file in os.listdir(missions_in) if file[-4:] == ".miz")
     # run tests here
     '''
     SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
     '''
-    SLPP_test(os.path.join(os.getcwd(),"slpp tests\mission"),
-            os.path.join(os.getcwd(),r"slpp tests\output"))
+    SLPP_test(os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\mission")),
+            os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\output")))
 
     # one test to rule them all:
     run_on_all_files(generate_context,miz_files_in)

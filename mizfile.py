@@ -110,7 +110,7 @@ class MizFile:
         for f in ["mission","options","warehouses"]:
             if not f in filelist:
                 raise Exceptions.Error("Fichier manquant", 'Impossible de trouver le fichier {} après extraction ({})'.format(f, self.path))
-        self.logger.info("ZIP file content: {}".format(str(filelist)))
+        self.logger.debug("ZIP file content: {}".format(str(filelist)))
         self.flat = True
         return self
 

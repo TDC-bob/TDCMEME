@@ -21,6 +21,12 @@ from os import remove
 from sys import exit
 ##from msgbox import MsgBox
 ##from PyQt4 import QtGui
+DEBUG = logging.DEBUG
+WARNING = logging.WARNING
+INFO = logging.INFO
+ERROR = logging.ERROR
+WARN = WARNING
+ERR = ERROR
 
 
 def logged(f):
