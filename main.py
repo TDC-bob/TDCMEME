@@ -11,12 +11,26 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
+#TODO: os.path.normcase(path)
 
 import mizfile, logging, _slpp, filecmp, difflib, mission, os
 from _logging import mkLogger, logged
 logger = mkLogger(__name__, logging.INFO )
 
 def main():
+    from dulwich import repo
+    test = repo()
+    return
+    # test GitPython
+    import gitdb
+    return
+    # test PyGit
+    import pygit2
+    return
+    # test dulwich
+    import dulwich.tests
+    dulwich.tests.test_suite()
+    return
     wk_dir = os.getcwd()
     missions_in = os.path.join(wk_dir,"missions_in")
     missions_out = os.path.join(wk_dir, "missions_out")
