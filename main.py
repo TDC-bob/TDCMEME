@@ -16,6 +16,7 @@
 import mizfile, logging, _slpp, filecmp, difflib, mission, os
 from _logging._logging import mkLogger, logged
 logger = mkLogger(__name__, logging.INFO )
+import Exceptions
 
 def main():
     wk_dir = os.getcwd()
