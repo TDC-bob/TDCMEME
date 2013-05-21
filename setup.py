@@ -30,7 +30,7 @@ setup(name='tdcmeme',
       copyright='Bob Daribouca',
       py_modules=['_logging','_slpp','Exceptions','main','makeTemp','mission','mizfile','tests'],
       packages=['campaign'],
-      ##data_files=[('slpp tests', ['slpp tests/mission'])]
+      data_files=[('Travis', ['slpp_tests'])]
 
 
 
