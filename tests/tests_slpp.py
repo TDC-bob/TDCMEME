@@ -7,7 +7,7 @@ import mission
 ##from ..slpp import SLPP
 import os
 from _logging._logging import mkLogger, logged, DEBUG, INFO
-mkLogger(__name__, INFO)
+mkLogger(__name__, DEBUG)
 
 class TestGlobalFunctions(unittest.TestCase):
 
