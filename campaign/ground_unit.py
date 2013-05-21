@@ -13,6 +13,7 @@
 
 from Exceptions import Error
 from _logging._logging import logged, mkLogger, DEBUG, INFO
+from copy import deepcopy
 logger = mkLogger(__name__, DEBUG)
 
 weights = ["light","medium","heavy"]
@@ -39,12 +40,12 @@ class GroundUnit():
             raise Error("paramètre incorrect", "je m'attendais à recevoir un dictionnaire, et j'ai eu ceci: {}".format(type(args)),self.logger)
         param_list = ["name","role","weight","unit_type","against","division",
                         "speed_on_map","speed_on_ground","unit_range","fuel",
-                        "ammo","aggro","group_count","group_size","cost_to_buy",
+                        "ammo","aggro","size","cost_to_buy",
                         "max_size","moral"]
         err = "paramètre manquant lors de l'instanciation d'une unité au sol"
         for param in param_list:
             try:
-                self.__dict__[param] = args[param]
+                self.__dict__[param] = deepcopy(args[param])
             except KeyError:
                 raise Error(err, "il manque le paramètre suivant: {}".format(param),self.logger)
         return
@@ -122,19 +123,29 @@ class GroundUnit():
     Name: {}
     '''.format(self.name)
 
+    def current_size(self):
+        '''
+        Retourne la quantité d'unités restantes dans le groupe par rapport
+        à la quantité d'unités maximum possible
+        '''
+        return (self.size/self.max_size)
+
     def flee(self, opponent):
         if self.ammo == 0:
             return True
         odds = self.aggro
-##        if self.against[opponent.weight] > 80:
-##            odds += 2
-##        elif self.against[opponent.weight] > 50:
-##            odds += 1
-##        elif self.against[opponent.weight] < 20:
-##            odds -= 1
-        odds = odds * (self.against[opponent.weight]/10)
-        odds = odds * (self.moral /10)
-        print("Odds for {}: {}".format(self.name, odds))
+        print("{}: base odds: {}".format(self.name, odds))
+        odds += (self.speed_on_ground-opponent.speed_on_ground)
+        print("{}: speed adjustement: {}".format(self.name, odds))
+        odds += self.against[opponent.weight]/10
+        print("{}: own against: {}".format(self.name, odds))
+        odds -= opponent.against[self.weight]/10
+        print("{}: opponent against: {}".format(self.name, odds))
+        odds = odds * self.current_size()
+        print("{}: size adjustement: {}".format(self.name, odds))
+        odds = odds * (self.moral/10)
+        print("{}: moral adjustement: {}".format(self.name, odds))
+        return odds < 0
 
 
 '''
