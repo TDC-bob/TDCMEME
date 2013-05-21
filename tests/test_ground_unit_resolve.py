@@ -10,14 +10,11 @@
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
-import unittest
-##import main
-import _slpp
-import mission
-##from ..slpp import SLPP
-import os
-import campaign.conflict as conflict
+import unittest, os
+
+from campaign import conflict
 from campaign.ground_unit import GroundUnit
+
 from _logging._logging import mkLogger, logged, DEBUG, INFO
 mkLogger(__name__, INFO)
 
@@ -87,6 +84,7 @@ class TestGlobalFunctions(unittest.TestCase):
 ##    @unittest.skip("temporary skip")
     def test_ground_unit_flee_speed(self):
         '''
+        Testing flee against speed
         '''
         unit1 = GroundUnit(T54)
         unit2 = GroundUnit(T80)
@@ -100,8 +98,11 @@ class TestGlobalFunctions(unittest.TestCase):
             print(unit1.flee(unit2))
 
     def test_ground_unit_conflict(self):
+        '''
+        Testing conflict resolution
+        '''
         wins = {"unit1":0,"unit2":0,"pars":0}
-        for x in range(1,100000):
+        for x in range(1,1000):
             unit1 = GroundUnit(T54)
             unit2 = GroundUnit(T80)
             unit1.name = "unit1"
@@ -117,9 +118,6 @@ class TestGlobalFunctions(unittest.TestCase):
 ##        else:
 ##            print("Both units fled")
 
-
-def main():
-    pass
 
 if __name__ == '__main__':
     unittest.main(verbosity=9)
