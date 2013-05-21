@@ -19,7 +19,7 @@ import os
 import campaign.conflict as conflict
 from campaign.ground_unit import GroundUnit
 from _logging._logging import mkLogger, logged, DEBUG, INFO
-mkLogger(__name__, DEBUG)
+mkLogger(__name__, INFO)
 
 T54 = {
     "name":"T54",

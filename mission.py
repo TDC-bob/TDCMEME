@@ -14,7 +14,7 @@
 
 from _logging._logging import logged, mkLogger
 import _slpp, logging, Exceptions, mizfile, os.path
-mkLogger(__name__,logging.DEBUG)
+mkLogger(__name__,logging.INFO)
 
 class Mission():
     """

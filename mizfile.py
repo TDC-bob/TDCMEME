@@ -14,7 +14,7 @@
 
 import logging, makeTemp, mission
 from _logging._logging import mkLogger, logged
-logger = mkLogger(__name__, logging.DEBUG )
+logger = mkLogger(__name__, logging.INFO )
 
 ##from os.path import isfile, exists, join, abspath, dirname, basename
 import os, shutil, zipfile, Exceptions

@@ -1,10 +1,10 @@
 # coding=utf-8
 import re
 import Exceptions
-from _logging._logging import logged, mkLogger
+from _logging._logging import logged, mkLogger, INFO
 from collections import OrderedDict
 
-logger = mkLogger(__name__)
+logger = mkLogger(__name__, INFO)
 
 
 r_SecStart = re.compile(r'^(?P<spaces> *)\[?(?P<name>"?[0-9A-Za-z_]+"?)\]? = $', re.M)
