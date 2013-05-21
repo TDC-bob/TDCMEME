@@ -13,7 +13,7 @@
 
 
 import logging, makeTemp, mission
-from _logging import mkLogger, logged
+from _logging._logging import mkLogger, logged
 logger = mkLogger(__name__, logging.DEBUG )
 
 ##from os.path import isfile, exists, join, abspath, dirname, basename

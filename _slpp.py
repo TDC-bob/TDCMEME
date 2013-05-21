@@ -1,7 +1,7 @@
 # coding=utf-8
 import re
 import Exceptions
-from _logging import logged, mkLogger
+from _logging._logging import logged, mkLogger
 from collections import OrderedDict
 
 logger = mkLogger(__name__)
