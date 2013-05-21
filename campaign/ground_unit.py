@@ -131,20 +131,24 @@ class GroundUnit():
         return (self.size/self.max_size)
 
     def flee(self, opponent):
+        if self.size < 1:
+            # TODO: obviously, in this case the unit would be destroyed,
+            # but it's not implemented yet, so ...
+            return True
         if self.ammo == 0:
             return True
         odds = self.aggro
-        print("{}: base odds: {}".format(self.name, odds))
+##        print("{}: base odds: {}".format(self.name, odds))
+        odds *= self.current_size()+0.2
+##        print("{}: size adjustement: {}".format(self.name, odds))
+        odds *= (self.moral/10)
+##        print("{}: moral adjustement: {}".format(self.name, odds))
         odds += (self.speed_on_ground-opponent.speed_on_ground)
-        print("{}: speed adjustement: {}".format(self.name, odds))
+##        print("{}: speed adjustement: {}".format(self.name, odds))
         odds += self.against[opponent.weight]/10
-        print("{}: own against: {}".format(self.name, odds))
+##        print("{}: own against: {}".format(self.name, odds))
         odds -= opponent.against[self.weight]/10
-        print("{}: opponent against: {}".format(self.name, odds))
-        odds = odds * self.current_size()
-        print("{}: size adjustement: {}".format(self.name, odds))
-        odds = odds * (self.moral/10)
-        print("{}: moral adjustement: {}".format(self.name, odds))
+##        print("{}: opponent against: {}".format(self.name, odds))
         return odds < 0
 
 
