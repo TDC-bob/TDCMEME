@@ -30,7 +30,7 @@ setup(name='tdcmeme',
       copyright='Bob Daribouca',
       py_modules=['_slpp','Exceptions','main','makeTemp','mission','mizfile'],
       packages=['campaign','_logging','tests'],
-      data_files=[('tests/slpp_tests', ['Travis/*'])]
+      data_files=[('tests/slpp_tests', ['Travis/MiG-29S - Abkhaz Fulcrums.miz'])]
 
 
 
