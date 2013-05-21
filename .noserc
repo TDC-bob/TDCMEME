@@ -1,7 +1,10 @@
 [nosetests]
-verbosity=9
+verbosity=2
 with-doctest=1
 with-coverage=1
 cover-erase=1
 cover-html=1
 cover-html-dir=COVER
+debug-log=nose-run.log
+logging-level=INFO
+detailed-errors=1
