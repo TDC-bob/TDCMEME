@@ -29,7 +29,6 @@ ERROR = logging.ERROR
 WARN = WARNING
 ERR = ERROR
 
-
 def logged(f):
     """
     Decorator for the __init__ function of a class

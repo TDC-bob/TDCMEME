@@ -23,6 +23,8 @@ class TestGlobalFunctions(unittest.TestCase):
         the mission file has not been changed
 
         Fixes gh-1
+
+        To run test, drop any number of *.miz files into the slpp tests directory
         '''
         miz_files = os.listdir("slpp tests")
         file_out = os.path.join(os.getcwd(),"slpp tests/output")

@@ -26,7 +26,7 @@ T54 = {
     "role":"assault",
     "weight": "medium",
     "unit_type": "vehicle",
-    "against": {"light":80,"medium":60,"heavy":40},
+    "against": {"light":80,"medium":60,"heavy":30},
     "division":None,
     "speed_on_map":1,
     "speed_on_ground":4,
@@ -44,7 +44,7 @@ T80 = {
     "role":"assault",
     "weight": "heavy",
     "unit_type": "vehicle",
-    "against": {"light":80,"medium":70,"heavy":60},
+    "against": {"light":90,"medium":70,"heavy":60},
     "division":None,
     "speed_on_map":1,
     "speed_on_ground":3,
@@ -84,7 +84,7 @@ class TestGlobalFunctions(unittest.TestCase):
     def tearDown(self):
         pass
 
-    @unittest.skip("temporary skip")
+##    @unittest.skip("temporary skip")
     def test_ground_unit_flee_speed(self):
         '''
         '''
