@@ -26,7 +26,7 @@ class TestGlobalFunctions(unittest.TestCase):
 
     def test_gh1_SLPP_consistency_1(self):
         '''
-        Verify that the SLPP parser outputs the EXACT same thing i's got
+        Verify that the SLPP parser outputs the EXACT same thing it's got
         (providing the mission file has not been changed)
 
         Fixes gh-1
