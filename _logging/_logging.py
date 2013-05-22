@@ -21,13 +21,13 @@ from os import remove
 from sys import exit
 ##from msgbox import MsgBox
 ##from PyQt4 import QtGui
-
 DEBUG = logging.DEBUG
 WARNING = logging.WARNING
 INFO = logging.INFO
 ERROR = logging.ERROR
 WARN = WARNING
 ERR = ERROR
+
 
 def logged(f):
     """
@@ -77,10 +77,3 @@ def __setupLogger(name="main", lvl=logging.DEBUG, logFile="python.log"):
     logger.addHandler(fh)
     logger.addHandler(ch)
     return logger
-
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

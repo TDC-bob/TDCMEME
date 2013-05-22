@@ -33,3 +33,14 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+*.bat
+
+config
+/missions
+/missions_in
+/slpp tests/output
+__pycache__
+*.log
+*.~py
+*.lnk
+*.psproj
