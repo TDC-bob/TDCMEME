@@ -6,6 +6,7 @@ install:
   - python setup.py sdist --formats=zip -k
   - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
   - pwd
+  - ls -all ./tests
   - ls -all
 # command to run tests
 script: nosetests
