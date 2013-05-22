@@ -34,33 +34,19 @@ class TestGlobalFunctions(unittest.TestCase):
         To run test, drop any number of *.miz files into the slpp tests directory
         '''
         try:
-            miz_files = os.listdir("tests/slpp_tests")
+            test_folder = os.path.normpath(os.path.join(os.getcwd(),"tests/slpp_tests"))
+            miz_files = os.listdir(test_folder)
         except (Exceptions.Error, FileNotFoundError):
-            miz_files = os.listdir("slpp_tests")
-
+            test_folder = os.path.normpath(os.path.join(os.getcwd(),"slpp_tests"))
+            miz_files = os.listdir(test_folder)
         p = SLPP()
         for f in miz_files:
-            try:
-                file_out = os.path.normpath(os.path.join(os.getcwd(),"tests/slpp_tests/output"))
+                file_out = os.path.normpath(os.path.join(test_folder,"output"))
                 if not f[-4:] == ".miz":
                     continue
-                path_to_file = os.path.normpath(os.path.join(os.getcwd(),"tests/slpp_tests",f))
+                path_to_file = os.path.normpath(os.path.join(test_folder,f))
                 with Mission(os.path.abspath(path_to_file)) as m:
                     path_to_mission_file = os.path.normpath(os.path.join(m.mizfile.temp_dir, "mission" ))
-##                    file_in = os.path.join(os.getcwd(),"tests/slpp_tests/mission")
-                    with open(file_out, mode="w", encoding="UTF-8") as _out:
-                        with open(path_to_mission_file, encoding="UTF-8") as _in:
-                            _out.write(p.encode(p.decode(_in.read())))
-                    with open(path_to_mission_file) as f1, open(file_out) as f2:
-                        self.assertTrue(f1.read() == f2.read())
-            except (Exceptions.Error, FileNotFoundError):
-                file_out = os.path.normpath(os.path.join(os.getcwd(),"slpp_tests/output"))
-                if not f[-4:] == ".miz":
-                    continue
-                path_to_file = os.path.normpath(os.path.join(os.getcwd(),"slpp_tests",f))
-                with Mission(os.path.abspath(path_to_file)) as m:
-                    path_to_mission_file = os.path.normpath(os.path.join(m.mizfile.temp_dir, "mission" ))
-##                    file_in = os.path.normpath(os.path.join(os.getcwd(),"slpp_tests/mission"))
                     with open(file_out, mode="w", encoding="UTF-8") as _out:
                         with open(path_to_mission_file, encoding="UTF-8") as _in:
                             _out.write(p.encode(p.decode(_in.read())))
