@@ -25,7 +25,7 @@ from distutils.core import setup
 
 setup(name='tdcmeme',
       version='0.0.1',
-      author='bob Daribouca',
+      author='Bob Daribouca',
       license='CC BY-NC-SA 3.0',
       copyright='Bob Daribouca',
       py_modules=['_slpp','Exceptions','main','makeTemp','mission','mizfile'],
