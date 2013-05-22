@@ -72,6 +72,24 @@ M16 = {
     "cost_to_buy": 10,
     "max_size": 16
 }
+Jeep = {
+    "name":"Jeep",
+    "role":"recce",
+    "weight": "light",
+    "unit_type": "vehicle",
+    "against": {"light":20,"medium":5,"heavy":0},
+    "division":None,
+    "speed_on_map":2,
+    "speed_on_ground":8,
+    "unit_range": 0,
+    "fuel": 4,
+    "ammo": 2,
+    "moral": 10,
+    "aggro": 0,
+    "size": 4,
+    "cost_to_buy": 25,
+    "max_size": 4
+}
 
 class TestGlobalFunctions(unittest.TestCase):
 
@@ -86,38 +104,54 @@ class TestGlobalFunctions(unittest.TestCase):
         '''
         Testing flee against speed
         '''
-        unit1 = GroundUnit(T54)
+        unit1 = GroundUnit(Jeep)
         unit2 = GroundUnit(T80)
-        print("Base odds: ")
+##        print("Base odds: ")
         unit1.flee(unit2)
-        print("\n")
-        print("testing speed_on_ground")
+##        print("\n")
+##        print("testing speed_on_ground")
         for x in range(1,10):
             unit1.speed_on_ground = x
 ##            print("unit1 speed: {}".format(unit1.speed_on_ground))
-            print(unit1.flee(unit2))
+            print("unit1 speed: {}\tUnit fled: {}".format(unit1.speed_on_ground,unit1.flee(unit2)))
 
-    def test_ground_unit_conflict(self):
+    def test_ground_unit_balanced_conflict(self):
         '''
         Testing conflict resolution
         '''
-        wins = {"unit1":0,"unit2":0,"pars":0}
-        for x in range(1,1000):
-            unit1 = GroundUnit(T54)
-            unit2 = GroundUnit(T80)
-            unit1.name = "unit1"
-            unit2.name = "unit2"
-            winner = conflict.resolve(unit1,unit2)
-            if winner:
-                wins[winner.name] += 1
-            else:
-                wins["pars"] += 1
-        print("RESULTS:\nWin 1: {}\nWin 2:{}\nPars:{}".format(wins["unit1"],wins["unit2"],wins["pars"]))
-##        if winner:
-##            print("Winner: {}".format(winner.name))
-##        else:
-##            print("Both units fled")
+        for u1, u2 in [
+            [Jeep,Jeep],[M16,M16],[T54,T54],[T80,T80]
+            ]:
+            wins = {"pars":0}
+            number_of_tests_to_run = 10000 # ne pas toucher !
+            for x in range(1,number_of_tests_to_run):
+                unit1 = GroundUnit(u1)
+                unit1.name = "{}_1".format(unit1.name)
+                unit2 = GroundUnit(u2)
+                unit2.name = "{}_2".format(unit2.name)
+                try:
+                    wins[unit1.name]
+                except KeyError:
+                    wins[unit1.name] = 0
+                    wins[unit2.name] = 0
+                winner = conflict.resolve(unit1,unit2)
+                if winner:
+                    wins[winner.name] += 1
+                else:
+                    wins["pars"] += 1
 
+            print("RESULTS:\n{}: {}\n{}: {}\nPars: {}".format(
+                unit1.name, wins[unit1.name],
+                unit2.name, wins[unit2.name],
+                wins["pars"]
+                ))
+            factor = 20
+            '''
+            La différence en terme de nombre de victoires ne peut pas dépasser
+            1/20ème du nombre de victoire de l'unité 1 ou 2
+            '''
+            self.assertTrue(abs(wins[unit1.name]-wins[unit2.name])<min(wins[unit1.name]/factor,wins[unit2.name]/factor))
+            print("Max diffs: {} / {}".format(wins[unit1.name]/factor, wins[unit2.name]/factor))
 
 if __name__ == '__main__':
     unittest.main(verbosity=9)

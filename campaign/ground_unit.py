@@ -71,10 +71,10 @@ class GroundUnit():
             except KeyError:
                 raise Error(err, "il manque le paramètre suivant: {}".format(param),self.logger)
         return
-        if args.name == None:
-            raise Error(err, "il manque le nom de l'unité", self.logger)
-        print(args.name)
-        return self
+##        if args.name == None:
+##            raise Error(err, "il manque le nom de l'unité", self.logger)
+####        print(args.name)
+##        return self
         '''
         Le "poids" (weight) de l'unité joue dans les calculs "pierre-papiers-ciseaux".
         Un groupe de chars T54 ne fera qu'une bouchée d'un groupe de Jeeps Recce (léger),
@@ -135,7 +135,7 @@ class GroundUnit():
 ##        print("{}: size adjustement: {}".format(self.name, odds))
         odds *= (self.moral/10)
 ##        print("{}: moral adjustement: {}".format(self.name, odds))
-        odds += (self.speed_on_ground-opponent.speed_on_ground)
+        odds += (self.speed_on_ground-opponent.speed_on_ground)/2
 ##        print("{}: speed adjustement: {}".format(self.name, odds))
         odds += self.against[opponent.weight]/10
 ##        print("{}: own against: {}".format(self.name, odds))
