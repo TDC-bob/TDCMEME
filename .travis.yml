@@ -7,9 +7,6 @@ install:
   - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
   - mkdir ./tests/slpp_tests
   - cp ./Travis/* ./tests/slpp_tests
-  - pwd
-  - ls -all ./tests
-  - ls -all
   
 # command to run tests
 script: nosetests
