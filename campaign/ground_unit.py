@@ -36,6 +36,28 @@ class GroundUnit():
         '''
         Below are default & average value for a ground unit
         '''
+        self.name = None # petty name for the unit
+        self.role = None # could be recce, assault, arty, C2C, ECM, EW, logistic, ...
+        self.weight = None # count as main comparator for force compare.
+        self.unit_type = None # can be Vehicle, Infantry, Deployed (arty), Structure, ...
+        self.against = None
+        self.division = None # parent division of the unit
+        self.speed_on_map = None # can move 1 square per "turn" (pure recce units up to 2, maybe ?)
+        self.speed_on_ground = None # ranging from 1 to 10, maybe
+        self.unit_range = None # cannot fire to adjacent squares (arty would be "1", super-arty/MLRS up to "2")
+        self.fuel = None # can move four squares before needing re-supplies
+        self.ammo = None # can engage four times before running out of ammo
+        self.moral = None # average starting value for every unit
+        self.aggro = None # unit will try to make contact with reasonable odds
+                        # 0: unit will do whatever it takes to avoid the enemy
+                        # 1: unit will try to outmanoeuver the enemy, and will flee superior or matching forces
+                        # 3: unit will actively seek enemy contact, even when their
+                        #   chances are quite low (it won't commit suicide, but it
+                        #   sure will stand its ground)
+        self.group_count = None # unit is made out of 4 groups
+        self.group_size = None # each group is made out of 8 individual units
+        self.cost_to_buy = None # the amount of economical resources to buy ONE GROUP
+        self.max_size = None # the maximum amount of groups in this unit
         if not type(args) == dict:
             raise Error("paramètre incorrect", "je m'attendais à recevoir un dictionnaire, et j'ai eu ceci: {}".format(type(args)),self.logger)
         param_list = ["name","role","weight","unit_type","against","division",
@@ -53,18 +75,6 @@ class GroundUnit():
             raise Error(err, "il manque le nom de l'unité", self.logger)
         print(args.name)
         return self
-        # all that is below is only a place holder for the IDE to know
-        # what I want to export, and to describe the STUB of a ground unit
-        # to everybody else
-        self.name = "T54" # petty name for the unit
-        self.role = "Assault" # could be recce, assault, arty, C2C, ECM, EW, logistic, ...
-        self.weight = "Medium" # count as main comparator for force compare.
-        self.unit_type = "Vehicle" # can be Vehicle, Infantry, Deployed (arty), Structure, ...
-        self.against = {
-            light: 80,
-            medium: 60,
-            heavy: 40
-        }
         '''
         Le "poids" (weight) de l'unité joue dans les calculs "pierre-papiers-ciseaux".
         Un groupe de chars T54 ne fera qu'une bouchée d'un groupe de Jeeps Recce (léger),
@@ -91,25 +101,7 @@ class GroundUnit():
             - l'unité subit le soutien aérien/arty de l'ennemi
             - l'unité se fait (ou pas) insulter en verlan par Fenlabise
             - etc, etc ...
-        '''
-        self.division = None # parent division of the unit
-        self.speed_on_map = 1 # can move 1 square per "turn" (pure recce units up to 2, maybe ?)
-        self.speed_on_ground = 4 # ranging from 1 to 10, maybe
-        self.unit_range = 0 # cannot fire to adjacent squares (arty would be "1", super-arty/MLRS up to "2")
-        self.fuel = 4 # can move four squares before needing re-supplies
-        self.ammo = 4 # can engage four times before running out of ammo
-        self.moral = 10 # average starting value for every unit
-        self.aggro = 2 # unit will try to make contact with reasonable odds
-                        # 0: unit will do whatever it takes to avoid the enemy
-                        # 1: unit will try to outmanoeuver the enemy, and will flee superior or matching forces
-                        # 3: unit will actively seek enemy contact, even when their
-                        #   chances are quite low (it won't commit suicide, but it
-                        #   sure will stand its ground)
-        self.group_count = 4 # unit is made out of 4 groups
-        self.group_size = 8 # each group is made out of 8 individual units
-        self.cost_to_buy = 50 # the amount of economical resources to buy ONE GROUP
-        self.max_size = 5 # the maximum amount of groups in this unit
-        '''
+
         Pour clarifier les 4 derniers points (group_count, group_size, cost_to_buy et max_size),
         un groupe de T54 de base compte en tout 32 chars, répartis en 4 groupes de 8.
         Si l'ennemi souhaite remplacer ou renforcer son unité, il devra dépenser 50
@@ -150,30 +142,6 @@ class GroundUnit():
         odds -= opponent.against[self.weight]/10
 ##        print("{}: opponent against: {}".format(self.name, odds))
         return odds < 0
-
-
-'''
-self.name = "T54" # petty name for the unit
-self.role = "Assault" # could be recce, assault, arty, C2C, ECM, EW, logistic, ...
-self.weight = "Medium" # count as main comparator for force compare.
-self.unit_type = "Vehicle" # can be Vehicle, Infantry, Deployed (arty), Structure, ...
-self.against = {
-    light: 80,
-    medium: 60,
-    heavy: 40
-}
-self.speed_on_map = 1 # can move 1 square per "turn" (pure recce units up to 2, maybe ?)
-self.speed_on_ground = 4 # ranging from 1 to 10, maybe
-self.unit_range = 0 # cannot fire to adjacent squares (arty would be "1", super-arty/MLRS up to "2")
-self.fuel = 4 # can move four squares before needing re-supplies
-self.ammo = 4 # can engage four times before running out of ammo
-self.moral = 10 # average starting value for every unit
-self.aggro = 2 # unit will try to make contact with reasonable odds
-self.group_count = 4 # unit is made out of 4 groups
-self.group_size = 8 # each group is made out of 8 individual units
-self.cost_to_buy = 50 # the amount of economical resources to buy ONE GROUP
-self.max_size = 40 # the maximum amount of units whatsoever
-'''
 
 def main():
     pass
