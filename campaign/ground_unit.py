@@ -20,6 +20,10 @@ weights = ["light","medium","heavy"]
 roles = ["assault","support","recce","artyt","c2c","ecm","ew","logistics"]
 types = ["vehicle","infantry","deployed","structure"]
 
+base_values = {
+    "moral":10
+}
+
 class GroundUnit():
     '''
     Représente une classe-démo pour une unité au sol
@@ -45,8 +49,8 @@ class GroundUnit():
         self.speed_on_map = None # can move 1 square per "turn" (pure recce units up to 2, maybe ?)
         self.speed_on_ground = None # ranging from 1 to 10, maybe
         self.unit_range = None # cannot fire to adjacent squares (arty would be "1", super-arty/MLRS up to "2")
-        self.fuel = None # can move four squares before needing re-supplies
-        self.ammo = None # can engage four times before running out of ammo
+##        self.fuel = None # can move four squares before needing re-supplies
+##        self.ammo = None # can engage four times before running out of ammo
         self.moral = None # average starting value for every unit
         self.aggro = None # unit will try to make contact with reasonable odds
                         # 0: unit will do whatever it takes to avoid the enemy
@@ -58,12 +62,26 @@ class GroundUnit():
         self.group_size = None # each group is made out of 8 individual units
         self.cost_to_buy = None # the amount of economical resources to buy ONE GROUP
         self.max_size = None # the maximum amount of groups in this unit
+        self.is_alive = True
+        self.is_entranched = False
         if not type(args) == dict:
             raise Error("paramètre incorrect", "je m'attendais à recevoir un dictionnaire, et j'ai eu ceci: {}".format(type(args)),self.logger)
-        param_list = ["name","role","weight","unit_type","against","division",
-                        "speed_on_map","speed_on_ground","unit_range","fuel",
-                        "ammo","aggro","size","cost_to_buy",
-                        "max_size","moral"]
+        param_list = ["name",
+                        "role",
+                        "weight",
+                        "unit_type",
+                        "against",
+                        "division",
+                        "speed_on_map",
+                        "speed_on_ground",
+                        "unit_range",
+##                        "fuel",
+##                        "ammo",
+                        "aggro",
+                        "size",
+                        "cost_to_buy",
+                        "max_size",
+                        "moral"]
         err = "paramètre manquant lors de l'instanciation d'une unité au sol"
         for param in param_list:
             try:
@@ -113,7 +131,8 @@ class GroundUnit():
     def __str__(self):
         return '''
     Name: {}
-    '''.format(self.name)
+    Alive: {}
+    '''.format(self.name, self.is_alive)
 
     def current_size(self):
         '''
@@ -122,26 +141,6 @@ class GroundUnit():
         '''
         return (self.size/self.max_size)
 
-    def flee(self, opponent):
-        if self.size < 1:
-            # TODO: obviously, in this case the unit would be destroyed,
-            # but it's not implemented yet, so ...
-            return True
-        if self.ammo == 0:
-            return True
-        odds = self.aggro
-##        print("{}: base odds: {}".format(self.name, odds))
-        odds *= self.current_size()+0.2
-##        print("{}: size adjustement: {}".format(self.name, odds))
-        odds *= (self.moral/10)
-##        print("{}: moral adjustement: {}".format(self.name, odds))
-        odds += (self.speed_on_ground-opponent.speed_on_ground)/2
-##        print("{}: speed adjustement: {}".format(self.name, odds))
-        odds += self.against[opponent.weight]/10
-##        print("{}: own against: {}".format(self.name, odds))
-        odds -= opponent.against[self.weight]/10
-##        print("{}: opponent against: {}".format(self.name, odds))
-        return odds < 0
 
 def main():
     pass
