@@ -1,7 +1,4 @@
-﻿
 from distutils.core import setup
-
-
 setup(name='tdcmeme',
       version='0.0.1',
       author='Bob Daribouca',
