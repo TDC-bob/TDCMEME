@@ -1,12 +1,13 @@
+﻿# -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Author:      Bob Daribouca
 #
-# Author:      owner
+# Copyright:   (c) Bob Daribouca 2013
+# Licence:     CC BY-NC-SA 3.0
 #
-# Created:     22/05/2013
-# Copyright:   (c) owner 2013
-# Licence:     <your licence>
+#               Please refer to the "LICENSE" file distributed with the package,
+#               or to http://creativecommons.org/licenses/by-nc-sa/3.0/
+#
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
