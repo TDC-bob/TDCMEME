@@ -65,7 +65,7 @@ class MizFile:
         self.logger.debug("checking for existence ...")
         if not os.path.exists(self.path):
             raise Exceptions.Error("File does not exist",self.path, self.logger)
-            raise Exceptions.FileDoesNotExist(self.path,self.logger)
+##            raise Exceptions.FileDoesNotExist(self.path,self.logger)
         self.logger.debug("files exists")
         self.logger.debug("checking for ZIP consistency ...")
         try:
@@ -149,7 +149,7 @@ class MizFile:
         try:
             shutil.rmtree(self.temp_dir)
         except:
-            raise Exceptions.Error("Impossiblede supprimer le répertoire temporaire","Impossible de supprimer le répertoire temporraire suivant: {}".format(self.temp_dir))
+            raise Exceptions.Error("Impossible de supprimer le répertoire temporaire","Impossible de supprimer le répertoire temporaire suivant: {}".format(self.temp_dir))
         self.logger.debug("répertoire temporaire supprimé")
         self.flat = False
 

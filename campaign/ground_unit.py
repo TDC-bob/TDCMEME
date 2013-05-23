@@ -140,10 +140,3 @@ class GroundUnit():
         à la quantité d'unités maximum possible
         '''
         return (self.size/self.max_size)
-
-
-def main():
-    pass
-
-if __name__ == '__main__':
-    main()

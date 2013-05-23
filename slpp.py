@@ -255,7 +255,7 @@ class SLPP:
             self.next_chr()
         return n
 
-
-slpp = SLPP()
-
-__all__ = ['slpp']
+##
+##slpp = SLPP()
+##
+##__all__ = ['slpp']

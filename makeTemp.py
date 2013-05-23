@@ -21,17 +21,3 @@ def random_string(prefix="", suffix="", size=8, chars=string.ascii_uppercase + s
 
 def random_folder(base_path, prefix="", suffix="", size=8, chars=string.ascii_uppercase + string.digits):
     return os.path.join(base_path, random_string(prefix, suffix, size, chars))
-
-
-def main():
-    s1 = random_string()
-    s2 = random_string("prefix")
-    s3 = random_string(suffix="suffix")
-    s4 = random_string(size=50)
-    s5 = random_string(chars="ABCDE")
-    print("\n".join([s1,s2,s3,s5]))
-    f1 = random_folder(r"c:\windows", prefix="test_")
-    print(f1)
-
-if __name__ == '__main__':
-    main()

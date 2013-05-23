@@ -153,63 +153,6 @@ class Conflict():
         self.logger.debug("{} should flee: {}".format(self.a.name,self.a_should_flee))
         self.logger.debug("{} should flee: {}".format(self.d.name,self.d_should_flee))
 
-def resolve(unit1,unit2):
-    '''
-    DÃƒÂ©termine le gagnant d'un conflit sur la carte
-
-    Le retour peut-ÃƒÂªtre soit l'unitÃƒÂ© qui a gagnÃƒÂ©, soit "None" dans le cas oÃƒÂ¹ les
-    deux unitÃƒÂ©s ont fui le combat (les lÃƒÂ¢ches !)
-    '''
-
-    winner = None
-    unit1_fled = unit2_fled = False
-
-    unit1_fled = unit1.flee(unit2)
-##    print("unit1 fled: {}".format(unit1_fled))
-    unit2_fled = unit2.flee(unit1)
-##    print("unit2 fled: {}".format(unit2_fled))
-
-    if (unit1_fled and unit2_fled) or ((not unit1.alive) and (not unit2.alive)):
-        print("============================\n\n\n")
-        return None
-    elif unit1_fled or (not unit1.alive):
-        print("============================\n\n\n")
-        return unit2
-    elif unit2_fled or (not unit2.alive):
-        print("============================\n\n\n")
-        return unit1
-    return _resolve_round(unit1,unit2)
-
-def _resolve_round(unit1,unit2):
-    unit1_random = randint(0,15)
-    unit2_random = randint(0,15)
-    unit1_power_mod = unit1.against[unit2.weight] + unit1_random
-    unit2_power_mod = unit2.against[unit1.weight] + unit2_random
-    print("{} random power mod: {}".format(unit1.name, unit1_power_mod))
-    print("{} random power mod: {}\n".format(unit2.name, unit2_power_mod))
-    unit1_power_mod *= unit1.moral/10
-    unit2_power_mod *= unit2.moral/10
-    print("{} power mod, moral-adjusted: {}".format(unit1.name, unit1_power_mod))
-    print("{} power mod, moral-adjusted: {}\n".format(unit2.name, unit2_power_mod))
-    unit1_power_mod *= unit1.current_size()
-    unit2_power_mod *= unit2.current_size()
-    print("{} power mod, size-adjusted: {}".format(unit1.name, unit1_power_mod))
-    print("{} power mod, size-adjusted: {}\n".format(unit2.name, unit2_power_mod))
-##    print("unit1_power_mod: {}".format(unit1_power_mod))
-##    print("unit2_power_mod: {}".format(unit2_power_mod))
-    unit1.size *= unit2_power_mod/100
-    unit2.size *= unit1_power_mod/100
-    print("{} left: {}".format(unit1.name, unit1.size))
-    print("{} left: {}\n".format(unit2.name, unit2.size))
-    if unit1.size < 1:
-        unit1.alive = False
-    if unit2.size < 1:
-        unit2.alive = False
-##    print("unit1.size :{}".format(unit1.size))
-##    print("unit2.size :{}".format(unit2.size))
-##    print(unit2.size)
-    return resolve(unit1,unit2)
-
 
 def main():
     pass

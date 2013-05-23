@@ -19,7 +19,7 @@ from campaign.ground_unit import GroundUnit
 from _logging._logging import mkLogger, logged, DEBUG, INFO, WARN
 logger=mkLogger(__name__, INFO, "tests.log")
 
-number_of_tests_to_run = 100
+number_of_tests_to_run = 1000
 
 T54 = {
     "name":"T54",
@@ -107,7 +107,6 @@ class TestGlobalFunctions(unittest.TestCase):
 ##    @unittest.skip("temporary skip")
     def test_ground_unit_unbalanced_conflict_speed(self):
         '''
-        Testing flee against speed
         '''
         logger.info("testing speed modifications")
         for u1, u2 in [(u,u) for u in unit_list]:
@@ -127,7 +126,6 @@ class TestGlobalFunctions(unittest.TestCase):
 ##    @unittest.skip("temporary skip")
     def test_ground_unit_unbalanced_conflict_moral(self):
         '''
-        Testing flee against speed
         '''
         logger.info("testing moral modifications")
         for u1, u2 in [(u,u) for u in unit_list]:
@@ -168,7 +166,6 @@ class TestGlobalFunctions(unittest.TestCase):
 ##    @unittest.skip("temporary skip")
     def test_ground_unit_balanced_conflict_same_units(self):
         '''
-        Testing conflict resolution
         '''
         logger.info("same units")
         for u1, u2 in [(u,u) for u in unit_list]:
@@ -185,7 +182,6 @@ class TestGlobalFunctions(unittest.TestCase):
 ##    @unittest.skip("temporary skip")
     def test_ground_unit_balanced_conflict_different_units(self):
         '''
-        Testing conflict resolution
         '''
         logger.info("different units")
         for u1 in [u for u  in unit_list]:
@@ -203,7 +199,6 @@ class TestGlobalFunctions(unittest.TestCase):
     @unittest.skip("temporary skip")
     def test_ground_unit_manual_tinkering(self):
         '''
-        Testing conflict resolution
         '''
         logger.info("manual testing")
         u1 = T54
@@ -241,29 +236,6 @@ def resolve_conflict(wins,unit1,unit2):
         wins[f.name]["fled"] += 1
     for d in destroyed:
         wins[d.name]["destroyed"] += 1
-##    if not c.a.is_alive:
-##        wins[c.a.name]["destroyed"] += 1
-##    if not c.d.is_alive:
-##        wins[c.d.name]["destroyed"] += 1
-##    winner = conflict.resolve(unit1,unit2)
-##    if winner:
-##        wins[winner.name]["wins"] += 1
-##        if winner.name == unit2.name:
-##            if not unit1.alive:
-##                wins[unit1.name]["destroyed"] += 1
-##            else:
-##                wins[unit1.name]["fled"] += 1
-##        else:
-##            if not unit2.alive:
-##                wins[unit2.name]["destroyed"] += 1
-##            else:
-##                wins[unit2.name]["fled"] += 1
-##    else:
-##        wins[unit1.name]["fled"] += 1
-##        wins[unit2.name]["fled"] += 1
-
-
-##    return wins
 
 if __name__ == '__main__':
     try:
