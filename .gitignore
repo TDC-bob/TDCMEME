@@ -34,7 +34,7 @@ nosetests.xml
 .project
 .pydevproject
 *.bat
-
+!nose.bat
 config
 /missions
 /missions_in
