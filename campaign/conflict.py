@@ -1,12 +1,13 @@
+﻿# -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Author:      Bob Daribouca
 #
-# Author:      owner
+# Copyright:   (c) Bob Daribouca 2013
+# Licence:     CC BY-NC-SA 3.0
 #
-# Created:     21/05/2013
-# Copyright:   (c) owner 2013
-# Licence:     <your licence>
+#               Please refer to the "LICENSE" file distributed with the package,
+#               or to http://creativecommons.org/licenses/by-nc-sa/3.0/
+#
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
@@ -14,10 +15,10 @@ from random import randint
 
 def resolve(unit1,unit2):
     '''
-    DÃ©termine le gagnant d'un conflit sur la carte
+    DÃƒÂ©termine le gagnant d'un conflit sur la carte
 
-    Le retour peut-Ãªtre soit l'unitÃ© qui a gagnÃ©, soit "None" dans le cas oÃ¹ les
-    deux unitÃ©s ont fui le combat (les lÃ¢ches !)
+    Le retour peut-ÃƒÂªtre soit l'unitÃƒÂ© qui a gagnÃƒÂ©, soit "None" dans le cas oÃƒÂ¹ les
+    deux unitÃƒÂ©s ont fui le combat (les lÃƒÂ¢ches !)
     '''
     winner = None
     unit1_fled = unit2_fled = False

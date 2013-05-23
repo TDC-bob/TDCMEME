@@ -1,12 +1,13 @@
+﻿# -*- coding: UTF-8 -*-
 #-------------------------------------------------------------------------------
-# Name:        module1
-# Purpose:
+# Author:      Bob Daribouca
 #
-# Author:      owner
+# Copyright:   (c) Bob Daribouca 2013
+# Licence:     CC BY-NC-SA 3.0
 #
-# Created:     21/05/2013
-# Copyright:   (c) owner 2013
-# Licence:     <your licence>
+#               Please refer to the "LICENSE" file distributed with the package,
+#               or to http://creativecommons.org/licenses/by-nc-sa/3.0/
+#
 #-------------------------------------------------------------------------------
 #!/usr/bin/env python
 
@@ -147,8 +148,8 @@ class TestGlobalFunctions(unittest.TestCase):
                 ))
             factor = 20
             '''
-            La différence en terme de nombre de victoires ne peut pas dépasser
-            1/20ème du nombre de victoire de l'unité 1 ou 2
+            La difference en terme de nombre de victoires ne peut pas depasser
+            1/20eme du nombre de victoire de l'unite 1 ou 2
             '''
             self.assertTrue(abs(wins[unit1.name]-wins[unit2.name])<min(wins[unit1.name]/factor,wins[unit2.name]/factor))
             print("Max diffs: {} / {}".format(wins[unit1.name]/factor, wins[unit2.name]/factor))
