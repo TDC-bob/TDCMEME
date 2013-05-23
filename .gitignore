@@ -42,6 +42,7 @@ config
 __pycache__
 *.log
 *.~py
+*.~*
 *.lnk
 *.psproj
 *.miz
