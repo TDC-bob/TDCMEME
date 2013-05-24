@@ -9,7 +9,17 @@ install:
   - cp ./Travis/* ./tests/slpp_tests
   - cd ./tests/slpp_tests
   - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_AttackOnKrymsk_V78.miz
-  - ls . -al
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_BlackGoldOfAnapa_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_Convoyhunting_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_DefenseOfBatumi_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_DefenseOfGelendzhik_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_GudautaRush_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_HamburgerHill_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_HardcoreTerrorists_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_NightHawkHunter_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationBigfoot_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationBunnyEscort_V78.miz
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationPushBack_V78.miz
   
 # command to run tests
 script: nosetests
