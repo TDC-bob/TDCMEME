@@ -1,6 +1,9 @@
 # TDCMEME_v2 #
 
-![alt text](https://travis-ci.org/TDC-bob/TDCMEME.png "Logo PyCharm")
+
+<a href="https://travis-ci.org/TDC-bob/TDCMEME">
+<img src="https://travis-ci.org/TDC-bob/TDCMEME.png" alt="Go to the Travis page" border="0">
+</a>
 
 A terme, le TDCMEMEv2 permettra la génération automatique de misisons DCS World, liées les unes aux autres par un petit moteur de campagne dynamiques.
 
@@ -17,5 +20,7 @@ Toutes les idées sont les bienvenues -> tdcmemev2.at.daribouca.net
 
 Ce projet été développé grâce au soutien de Jetbrain's PyCharm
 
-![alt text](http://www.jetbrains.com/img/logos/pycharm_logo.gif "Logo PyCharm")
-### http://www.jetbrains.com/pycharm
+
+<a href="http://www.jetbrains.com/pycharm">
+<img src="http://www.jetbrains.com/img/logos/pycharm_logo.gif" alt="Go to PyCharm home page" border="0">
+</a>
