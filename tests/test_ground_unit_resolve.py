@@ -114,6 +114,8 @@ class TestGlobalFunctions(unittest.TestCase):
             for mod in [1,0.9,0.8,0.7,0.6,0.5]:
                 wins = {}
                 logger.info("unit2.speed * {}".format(mod))
+                if os.getenv("TRAVIS") == 'true':
+                    print("outputin' something to let Travis know we're not dead (yet)")
                 for x in range(1,number_of_tests_to_run+1):
                     unit1 = GroundUnit(u1)
                     unit1.name = "{}_1".format(unit1.name)
@@ -133,6 +135,8 @@ class TestGlobalFunctions(unittest.TestCase):
             for mod in [1,0.9,0.8,0.7,0.6,0.5]:
                 wins = {}
                 logger.info("unit2.moral * {}".format(mod))
+                if os.getenv("TRAVIS") == 'true':
+                    print("outputin' something to let Travis know we're not dead (yet)")
                 for x in range(1,number_of_tests_to_run+1):
                     unit1 = GroundUnit(u1)
                     unit1.name = "{}_1".format(unit1.name)
@@ -150,6 +154,8 @@ class TestGlobalFunctions(unittest.TestCase):
         for u1, u2 in [(u,u) for u in unit_list]:
 ##            number_of_tests_to_run =1000
             for mod in [1,0.9,0.8,0.7,0.6,0.5]:
+                if os.getenv("TRAVIS") == 'true':
+                    print("outputin' something to let Travis know we're not dead (yet)")
                 wins = {}
                 logger.info("unit2.size * {}".format(mod))
                 for x in range(1,number_of_tests_to_run+1):
@@ -169,6 +175,8 @@ class TestGlobalFunctions(unittest.TestCase):
         '''
         logger.info("same units")
         for u1, u2 in [(u,u) for u in unit_list]:
+            if os.getenv("TRAVIS") == 'true':
+                print("outputin' something to let Travis know we're not dead (yet)")
             wins = {}
 ##            number_of_tests_to_run = 1000 # ne pas toucher !
             for x in range(1,number_of_tests_to_run+1):
@@ -186,6 +194,8 @@ class TestGlobalFunctions(unittest.TestCase):
         logger.info("different units")
         for u1 in [u for u  in unit_list]:
             for u2 in  [u for u in reversed(unit_list)]:
+                if os.getenv("TRAVIS") == 'true':
+                    print("outputin' something to let Travis know we're not dead (yet)")
                 wins = {}
 ##                number_of_tests_to_run = 1000 # ne pas toucher !
                 for x in range(1,number_of_tests_to_run+1):
@@ -204,6 +214,8 @@ class TestGlobalFunctions(unittest.TestCase):
         u1 = T54
         u2 = T80
         wins = {}
+        if os.getenv("TRAVIS") == 'true':
+            print("outputin' something to let Travis know we're not dead (yet)")
 ##        number_of_tests_to_run = 100
 ##        for u1, u2 in [(u,u) for u in unit_list]:
         for x in range(1,number_of_tests_to_run+1):

@@ -52,6 +52,8 @@ class TestGlobalFunctions(unittest.TestCase):
             miz_files = os.listdir(test_folder)
         p = SLPP()
         for f in miz_files:
+                if os.getenv("TRAVIS") == 'true':
+                    print("outputin' something to let Travis know we're not dead (yet)")
                 file_out = os.path.normpath(os.path.join(test_folder,"output"))
                 if not f[-4:] == ".miz":
                     continue
