@@ -5,6 +5,10 @@
 <img src="https://travis-ci.org/TDC-bob/TDCMEME.png" alt="Go to the Travis page" border="0">
 </a>
 
+<a href="http://tdc-bob.github.io/TDCMEME/">Coverage report</a> (may be out-of-date sometimes, until I come up with some auto-updater)
+
+http://tdc-bob.github.io/TDCMEME/
+
 A terme, le TDCMEMEv2 permettra la génération automatique de misisons DCS World, liées les unes aux autres par un petit moteur de campagne dynamiques.
 
 Le moteur de campagne dynamique sera basé sur les idées et concepts de celui qui était présent dans Falcon 4.0, un modèle du genre.
