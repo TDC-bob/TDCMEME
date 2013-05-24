@@ -7,6 +7,9 @@ install:
   - find ./dist -iname "*.zip" -print0 | xargs -0 pip install
   - mkdir ./tests/slpp_tests
   - cp ./Travis/* ./tests/slpp_tests
+  - cd ./tests/slpp_tests
+  - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_AttackOnKrymsk_V78.miz
+  - ls . -al
   
 # command to run tests
 script: nosetests
