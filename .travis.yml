@@ -20,7 +20,7 @@ install:
   - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationBigfoot_V78.miz
   - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationBunnyEscort_V78.miz
   - wget https://googledrive.com/host/0B5wKXY68Wip5S3IwN2xqaGMyY1U/DRAGONs_OperationPushBack_V78.miz
-  
+  - cd ../../tests
 # command to run tests
 script: nosetests
 # - python tdcmeme-0.0.1/tests.py
