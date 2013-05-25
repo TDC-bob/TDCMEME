@@ -1,0 +1,113 @@
+Hi all, i'll try to make this post As Clear and Updated As Possible, i'm playing for a while with ME and now with BS2 ME (called patch 1.1.10) for a nice campaign designed to be as enjoyable as Balkan/Korea theater in another well known game. And it's very H-A-R-D.
+I Will (over time) post general designs meant to accomplish certains Mission Roles Task. I wish i can count on you and tells to the community how did you successfully done your own task. If it's a good method, i will add it in this list.
+For now i will list only Automated tasks such as Task and Enroute Tasks
+Triggered tasks will come later.
+
+For a starting roles guide, i will refer to F4AF p.243
+
+DCA : Defensive Counter Air : protect friendly assets in and around the station area
+Task : CAP (Combat Air Patrol) // Circular waypoints around the area then in Adv Waypoints : Start Enroute Task (SETk) Search then engage with a max distance equals to the radius and range of medium AA missile (Aim120c = 50km). Any penetrating aircraft will be engaged (assumed a good plane like F15/Mig 29).
+Use looped waypoints (Perform Command : Switch waypoint 1) with stop conditions after triggered action or mission duration. Awacs in DCS can't relieve friendly aircrafts.
+
+BARCAP : Barrier Combat Air Patrol : Protect a lane from enemy penetration.
+Task : CAP // Linear waypoint following a Lane (which define a friendly zone) then setup as DCA task with a maxed distance of 10-50km. Any aircraft entering this zone will be engaged. (preventing bomber to pass through). Use looped waypoints in case of.
+
+HAVCAP : High Value Asset Protection Combat Air Patrol : A/A mission designed to protect Aircraft like Tankers or AWACS.
+Task : CAP // Place waypoints following the Tanker route, AdvWay : SETk Search then Engage with max zone higher than Medium AA missile. Engage Fighters only. Ensure Altitude and Speed match the Tanker (ETA) waypoints. Use looped waypoints. Set up a good time on station. You can manually perform a AA refuelling before long predicted engagements. (available for F15/F16/F117/A10/E3A crafts only)
+
+TARCAP : Target Combat Air Patrol : Protect friendly aircrafts engaged in an operation within enemy airspace.
+Same as DCA but into enemy Territory.
+
+RESCAP : Rescue Combat Air Patrol : Protect rescue Helos.
+Same as HAVCAP, match the route with rescueing helos.
+
+Ambush Cap :Prevent enemy radar detection (ex : hiding behind a mountain ) in order to engage at shortened range (generally AIM9 range)
+Task : CAP // Use low Orbit function behind a hill and set stop condition if enemy penetrates a small Zone/Moving zone area. Enemy should NOT be programmed to engage this specific package. He must Search it before engaging.
+
+Sweep : Aggressive counter air into enemy territory.
+Task : CAP or Fighter Sweep // Be aware that CAP and Fighter Sweep will allow friendly to pursue enemy far, far away, using their Full A/B to engage a distant Bomber. (100-150km)
+A 4-group can separate to engage differents close enemies. Engaging the deadliest first. Su33/27 then Mig29S/A...
+F14 with AIM54 are good for long range bomber with slow manoevers.
+F15 and F18 are very well performing with this task.
+F16 seems lazy, they're usually get shot before they can fire any aim-120.
+AIM 120b is easily fooled with heavy manoevering aircraft at a medium range.
+
+Intercept : A/A interception of an assigned aircraft.
+Task : Intercept // set AdvWay to Task : engage group...
+There is no Enroute task for this one
+need to be confirmed but they will engage any aircraft whitin missile range.
+
+Escort : Protect a strike package from enemy aircraft (assume we have packages in dcs).
+Task : CAP !!! // Use as Havcap.
+Escort task in ME seems to be broken, they won't engage any aircraft UNLESS being engaged. (usually it's too late)
+
+SEAD Strike : Suppression of Enemy Air Defenses : Engage SAM radar and launch vehicles.
+Task : SEAD // AdvWay : SETk search then engage according to your wishes. Max distance, AAA, Low/Med/High altitude SAMs.
+Excellent Task for Choppers (apache, Cobra, Kamov) and CAS aircrafts (A-10/F16/Su25...)
+
+SEAD Escort : Protect SEAD Strike Package from SAM. Ex : Engage SAM's radar vehicles preventing it from firing.
+Task : SEAD // same as SEAD Strike but... create a package and match waypoint with Strike Package. Don't allow aircraft to engage any ground units by limiting their loads. (AGM88 but not any mavericks)
+
+OCA Strike : Offensive Counter Air : Engage dangerous enemy assets such like SAM launch vehicles and airbases.
+Task : Runway Attack, CAS or SEAD. Perform Manual task or enroute task if they have to find enemy before engaging.
+Task Bombing or Pinpoint Strike for statics objects.
+Tip for runway attack : F15E strike fighter can take a shit load of durandal (BSU49?) with 3 fuel tanks, perfect to strike all chinese runways before entering war with allied north korea . In DCS, it's Mk-82 AIR but havn't tested it yet)
+
+Strike : Standard Air to Ground mission against enemy war production.
+Task : Bombing or Pinpoint strike. No enroute task.
+Usual aircrafts : A-10, F16, F18. But you can try the FAB250/500 with Ka-50. it requires good training though. CCIP is your friend, not CCRP.
+
+Deep Strike : Strike deep into enemy territory
+Same as Strike. Not to be done in a chopper directly.
+
+FAC : Foward Air Control : Part of an On-Call CAS. Assign targets to strike packages.
+Task : AFAC. // Completely broken or useless in DCS BS2. You can't contact any FAC. The FAC (ground or air) will NOT help other AI units. But he WILL actually fly over the target then circle around until bingo or destruction. (uh-oh, it was a SAM)
+
+On-Call CAS : On-Call Close Air Support : Strike enemy army near friendly ground forces. Ask for targets from a FAC.
+Task : CAS // Can't be On-Call with KA-50. Radio remain silent. Must be completely triggered or manually tasked, which leads to a .....->
+
+Pre-Plan CAS : Strike known enemy unitswithout FAC assistance.
+Task : CAS // AdvWay can be manually tasked (ai wise) or with enroute task (AI unaware. must find it first or with awacs help, even maybe with FAC package)
+
+CAS : Close Air Support : Destroy as many vehicles as possible.
+Task : CAS // same as pre-planned CAS. Automated or Triggered.
+
+Interdiction : Prevent enemy from ressuplying its front line.
+Task : CAS // AdvWay : SETk with limited search area behind enemy lines, or perform a full manual task.
+
+Recon : Reconnaissance : Gather intelligence of enemy area.
+Task : Reconnaissance // Seems to be broken in DCS BS2, recon aircraft will not transmit over radio what its seeing. Only AWACS report enemy air/ground contact.
+
+BDA : Battle Damage Assessment : Mission flown to verify damage done to a designated (and destroyed) target.
+Cool feature, but the Shkval can't take photos. and it require a Dynamic Campaign .
+
+Anti-Ship : Strike Naval forces.
+Task : Anti-Ship // AdvWay : same as CAS but with Anti-ship ammos.
+Really hard to script.
+Planes with this task will usually try to perform ship engagement then defend themselves if firing by any enemy CAP.
+Bugs :
+- You must create a new payload for AI Helos as no default payload are present.
+- Missiles fuel or launch calculations is wrong. if AI fire at max range (Excellent skill) the missile will not reach the ship and crash way before (ex. with russians bomber (su-33, TU))
+- ROE/State of ships doesn't work yet. Ticonderoga or Normandy can easily counter-attack full package of SU 33, or long range bombers. If the real world look like this, we can start to declare war each other again because Nuclear Threat is not a problem anymore.
+- Do not let aircrafts land on carrier yet, they will be stuck right in the middle and start drift slowly.
+
+Training : Master your flying machine. (and the X-messages in Me triggers)
+Task : ??? // Check this .doc made by ED
+
+
+I have not yet tested full capability, and i'm limited in russian knowledge that's why i'm not talking about TU-142 and others...
+Make any suggestion, comments, i'm open to critiscism unless non-constructive. I'm not a soldier, i just want to make best realistic/fancy mission for a non-dynamic campaing game
+I only have DCS BS1/2. A-10 is coming along the way, but you can do so much with a tiny flying shark.
+Next post will be reserved for known bugs or features such as rearming, buggy carrier operations, which can be found all over the place.
+
+I'll probably need help for AI Ground Units summary as many function doesn't work. (SA-10 sam system can't move by itself (but CP, which role still unknown to me), relation to awacs, ROE not working etc...)
+
+KA50 can't do all of mission for sure, A10 can do more (or less), but a good scripted mission can be so much enjoyable. nothing keeps you from helping a ground unit to capture an airport, then deploy Fighters Packages to protect you during the rest of your mission.
+AI like to chat (yeah they do), if you feel alone, just set the right frequency.
+Bullseye comms are in NM/FEETS for BS blue-side fans, so no, there are not any space shuttle bomber.
+
+At last, this post will be heavily modified, depending on you.
+i'm not english so if i made too many mistakes, just PM me with the right form
+
+BIG Thanks to ED, Frenchs and Englishmen for porting Naval Operations to DCSBS !
+...now the 6th june 1944 will be possible again !
