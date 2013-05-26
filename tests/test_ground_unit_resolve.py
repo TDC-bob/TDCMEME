@@ -19,7 +19,7 @@ from campaign.ground_unit import GroundUnit
 from _logging._logging import mkLogger, logged, DEBUG, INFO, WARN
 logger=mkLogger(__name__, INFO, "tests.log")
 
-number_of_tests_to_run = 1000
+number_of_tests_to_run = 10
 
 T54 = {
     "name":"T54",
