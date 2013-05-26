@@ -31,7 +31,7 @@ class TestGlobalFunctions(unittest.TestCase):
 
     def test_instance(self):
         if os.getenv("TRAVIS") == 'true':
-            raise SkipTest()
+            raise unittest.SkipTest()
         m = mizfile.MizFile(os.path.join(root,"BenJee/MiG-29S - Abkhaz Fulcrums.miz"))
         m.check().decompact().recompact().delete_temp_dir()
         self.assertTrue(os.path.exists(os.path.join(root,"BenJee/TDCMEME/MiG-29S - Abkhaz Fulcrums.miz")))
@@ -40,14 +40,14 @@ class TestGlobalFunctions(unittest.TestCase):
 
     def test_mizfile_check_bad_zip_file(self):
         if os.getenv("TRAVIS") == 'true':
-            raise SkipTest()
+            raise unittest.SkipTest()
         with self.assertRaises(Exceptions.InvalidMizFile):
             m = mizfile.MizFile(os.path.join(root,"INVALID/invalid.miz"))
             m.check()
 
     def test_mizfile_check_permission_errors(self):
         if os.getenv("TRAVIS") == 'true':
-            raise SkipTest()
+            raise unittest.SkipTest()
         with self.assertRaises(Exceptions.PermissionError):
             m = mizfile.MizFile(os.path.join(root,"INVALID"))
             m.check()
