@@ -19,10 +19,8 @@ from mission import Mission
 ##import _slpp
 ##import mission
 ##from ..slpp import SLPP
-try:
-    import Exceptions
-except ImportError:
-    pass
+import Exceptions
+
 
 from _logging._logging import mkLogger, logged, DEBUG, INFO
 mkLogger(__name__, INFO)
