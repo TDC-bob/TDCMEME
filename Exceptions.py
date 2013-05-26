@@ -24,6 +24,11 @@ class PermissionError(Exception):
         logger.error('''FATAL ERROR: {}\n\tMessage: {}'''.format(base_info, message))
 
 
+class FileDoesNotExist(Exception):
+    def __init__(self, base_info="Pas d'information sur cette erreur", message="Pas de message pour cette erreur", logger=logger):
+        logger.error('''FATAL ERROR: {}\n\tMessage: {}'''.format(base_info, message))
+
+
 class InvalidMissionFile(Exception):
     def __init__(self, filepath="No filepath given", logger=logger, message="Pas de message spécifique pour cette exception"):
         logger.error('''ce fichier n'est pas un fichier mission valide: "{}"\n\tMessage: {}'''.format(filepath, message))
@@ -34,12 +39,6 @@ class InvalidMizFile(Exception):
         logger.error('''le fichier MIZ n'est pas valide: "{}"\n\tMessage: {}'''.format(filepath, message))
 ##        super(InvalidMizFile, self).__init__(filepath)
 ##        exit(-1)
-
-
-class FileDoesNotExist(Exception):
-    def __init__(self, filepath, logger, message="Pas de message spécifique pour cette exception"):
-        logger.error('''le fichier mission spécifié n'existe pas: "{}"\n\tMessage: {}'''.format(filepath, message))
-
 
 class MissingObjectInZipFile(Exception):
     def __init__(self, mizFilePath, objName, logger):
