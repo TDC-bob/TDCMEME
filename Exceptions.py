@@ -19,6 +19,10 @@ class Error(Exception):
     def __init__(self, base_info="Pas d'information sur cette erreur", message="Pas de message pour cette erreur", logger=logger):
         logger.error('''FATAL ERROR: {}\n\tMessage: {}'''.format(base_info, message))
 
+class PermissionError(Exception):
+    def __init__(self, base_info="Pas d'information sur cette erreur", message="Pas de message pour cette erreur", logger=logger):
+        logger.error('''FATAL ERROR: {}\n\tMessage: {}'''.format(base_info, message))
+
 
 class InvalidMissionFile(Exception):
     def __init__(self, filepath="No filepath given", logger=logger, message="Pas de message spécifique pour cette exception"):
