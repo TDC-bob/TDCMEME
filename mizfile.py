@@ -76,7 +76,7 @@ class MizFile:
         except zipfile.BadZipFile:
             raise Exceptions.InvalidMizFile(self.path, self.logger, "le fichier MIZ est corrompu")
         except PermissionError:
-            raise Exceptions.Error("Impossible d'accéder au fichier", "Erreur fatale pendant la décompression du fichier suivant: {} (peut-être s'agit-il d'un dossier ?)".format(self.path))
+            raise Exceptions.PermissionError("Impossible d'accéder au fichier", "Erreur fatale pendant la décompression du fichier suivant: {} (peut-être s'agit-il d'un dossier ?)".format(self.path))
         self.logger.debug("ZIP format is correct")
         self.logger.info("all sanity checks OK")
         self.checked = True
@@ -142,6 +142,7 @@ class MizFile:
                 full_path_to_file = os.path.join(self.temp_dir,f)
                 zip_file.write(full_path_to_file,arcname=f)
         self.logger.debug("fichier zip en sortie créé avec succès")
+        return self
 
     @logged
     def delete_temp_dir(self):
