@@ -5,7 +5,7 @@
     
     
     <meta http-equiv='X-UA-Compatible' content='IE=emulateIE7' />
-    <title>Coverage for mizfile: 83%</title>
+    <title>Coverage for mizfile: 89%</title>
     <link rel='stylesheet' href='style.css' type='text/css'>
     
     <script type='text/javascript' src='jquery-1.4.3.min.js'></script>
@@ -21,13 +21,13 @@
 <div id='header'>
     <div class='content'>
         <h1>Coverage for <b>mizfile</b> :
-            <span class='pc_cov'>83%</span>
+            <span class='pc_cov'>89%</span>
         </h1>
         <img id='keyboard_icon' src='keybd_closed.png'>
         <h2 class='stats'>
-            103 statements &nbsp;
+            96 statements &nbsp;
             <span class='run hide_run shortkey_r button_toggle_run'>85 run</span>
-            <span class='mis shortkey_m button_toggle_mis'>18 missing</span>
+            <span class='mis shortkey_m button_toggle_mis'>11 missing</span>
             <span class='exc shortkey_x button_toggle_exc'>0 excluded</span>
             
         </h2>
@@ -127,7 +127,7 @@
 <p id='n64' class='stm run hide_run'><a href='#n64'>64</a></p>
 <p id='n65' class='stm run hide_run'><a href='#n65'>65</a></p>
 <p id='n66' class='stm run hide_run'><a href='#n66'>66</a></p>
-<p id='n67' class='stm mis'><a href='#n67'>67</a></p>
+<p id='n67' class='stm run hide_run'><a href='#n67'>67</a></p>
 <p id='n68' class='pln'><a href='#n68'>68</a></p>
 <p id='n69' class='stm run hide_run'><a href='#n69'>69</a></p>
 <p id='n70' class='stm run hide_run'><a href='#n70'>70</a></p>
@@ -217,17 +217,18 @@
 <p id='n154' class='stm run hide_run'><a href='#n154'>154</a></p>
 <p id='n155' class='stm run hide_run'><a href='#n155'>155</a></p>
 <p id='n156' class='pln'><a href='#n156'>156</a></p>
-<p id='n157' class='stm run hide_run'><a href='#n157'>157</a></p>
+<p id='n157' class='pln'><a href='#n157'>157</a></p>
 <p id='n158' class='pln'><a href='#n158'>158</a></p>
-<p id='n159' class='stm mis'><a href='#n159'>159</a></p>
-<p id='n160' class='stm mis'><a href='#n160'>160</a></p>
-<p id='n161' class='stm mis'><a href='#n161'>161</a></p>
-<p id='n162' class='stm mis'><a href='#n162'>162</a></p>
-<p id='n163' class='stm mis'><a href='#n163'>163</a></p>
-<p id='n164' class='stm mis'><a href='#n164'>164</a></p>
+<p id='n159' class='pln'><a href='#n159'>159</a></p>
+<p id='n160' class='pln'><a href='#n160'>160</a></p>
+<p id='n161' class='pln'><a href='#n161'>161</a></p>
+<p id='n162' class='pln'><a href='#n162'>162</a></p>
+<p id='n163' class='pln'><a href='#n163'>163</a></p>
+<p id='n164' class='pln'><a href='#n164'>164</a></p>
 <p id='n165' class='pln'><a href='#n165'>165</a></p>
 <p id='n166' class='pln'><a href='#n166'>166</a></p>
 <p id='n167' class='pln'><a href='#n167'>167</a></p>
+<p id='n168' class='pln'><a href='#n168'>168</a></p>
                 
             </td>
             <td class='text' valign='top'>
@@ -297,7 +298,7 @@
 <p id='t64' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>.</span><span class='nam'>info</span><span class='op'>(</span><span class='str'>&quot;runing sanity checks&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t65' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>.</span><span class='nam'>debug</span><span class='op'>(</span><span class='str'>&quot;checking for existence ...&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t66' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span> <span class='key'>not</span> <span class='nam'>os</span><span class='op'>.</span><span class='nam'>path</span><span class='op'>.</span><span class='nam'>exists</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>path</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t67' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>raise</span> <span class='nam'>Exceptions</span><span class='op'>.</span><span class='nam'>Error</span><span class='op'>(</span><span class='str'>&quot;File does not exist&quot;</span><span class='op'>,</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>path</span><span class='op'>,</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
+<p id='t67' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>raise</span> <span class='nam'>Exceptions</span><span class='op'>.</span><span class='nam'>FileDoesNotExist</span><span class='op'>(</span><span class='str'>&quot;File does not exist&quot;</span><span class='op'>,</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>path</span><span class='op'>,</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t68' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raise Exceptions.FileDoesNotExist(self.path,self.logger)</span><span class='strut'>&nbsp;</span></p>
 <p id='t69' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>.</span><span class='nam'>debug</span><span class='op'>(</span><span class='str'>&quot;files exists&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t70' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>.</span><span class='nam'>debug</span><span class='op'>(</span><span class='str'>&quot;checking for ZIP consistency ...&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
@@ -387,17 +388,18 @@
 <p id='t154' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>logger</span><span class='op'>.</span><span class='nam'>debug</span><span class='op'>(</span><span class='str'>&quot;r&#233;pertoire temporaire supprim&#233;&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
 <p id='t155' class='stm run hide_run'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>flat</span> <span class='op'>=</span> <span class='key'>False</span><span class='strut'>&nbsp;</span></p>
 <p id='t156' class='pln'><span class='strut'>&nbsp;</span></p>
-<p id='t157' class='stm run hide_run'>&nbsp; &nbsp; <span class='op'>@</span><span class='nam'>logged</span><span class='strut'>&nbsp;</span></p>
-<p id='t158' class='pln'>&nbsp; &nbsp; <span class='key'>def</span> <span class='nam'>parse_mission</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>)</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t159' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span> <span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>checked</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t160' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>check</span><span class='op'>(</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t161' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>if</span> <span class='key'>not</span> <span class='nam'>self</span><span class='op'>.</span><span class='nam'>flat</span><span class='op'>:</span><span class='strut'>&nbsp;</span></p>
-<p id='t162' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>decompact</span><span class='op'>(</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t163' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='nam'>self</span><span class='op'>.</span><span class='nam'>mission_file</span> <span class='op'>=</span> <span class='nam'>os</span><span class='op'>.</span><span class='nam'>path</span><span class='op'>.</span><span class='nam'>join</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>temp_dir</span><span class='op'>,</span><span class='str'>&quot;mission&quot;</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t164' class='stm mis'>&nbsp; &nbsp; &nbsp; &nbsp; <span class='key'>return</span> <span class='nam'>mission</span><span class='op'>.</span><span class='nam'>Mission</span><span class='op'>(</span><span class='nam'>self</span><span class='op'>.</span><span class='nam'>mission_file</span><span class='op'>)</span><span class='strut'>&nbsp;</span></p>
-<p id='t165' class='pln'><span class='strut'>&nbsp;</span></p>
+<p id='t157' class='pln'><span class='com'># not needed anymore</span><span class='strut'>&nbsp;</span></p>
+<p id='t158' class='pln'><span class='com'>##&nbsp; &nbsp; @logged</span><span class='strut'>&nbsp;</span></p>
+<p id='t159' class='pln'><span class='com'>##&nbsp; &nbsp; def parse_mission(self):</span><span class='strut'>&nbsp;</span></p>
+<p id='t160' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; if not self.checked:</span><span class='strut'>&nbsp;</span></p>
+<p id='t161' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; self.check()</span><span class='strut'>&nbsp;</span></p>
+<p id='t162' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; if not self.flat:</span><span class='strut'>&nbsp;</span></p>
+<p id='t163' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; self.decompact()</span><span class='strut'>&nbsp;</span></p>
+<p id='t164' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; self.mission_file = os.path.join(self.temp_dir,&quot;mission&quot;)</span><span class='strut'>&nbsp;</span></p>
+<p id='t165' class='pln'><span class='com'>##&nbsp; &nbsp; &nbsp; &nbsp; return mission.Mission(self.mission_file)</span><span class='strut'>&nbsp;</span></p>
 <p id='t166' class='pln'><span class='strut'>&nbsp;</span></p>
 <p id='t167' class='pln'><span class='strut'>&nbsp;</span></p>
+<p id='t168' class='pln'><span class='strut'>&nbsp;</span></p>
                 
             </td>
         </tr>
