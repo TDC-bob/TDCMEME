@@ -25,6 +25,8 @@ if __name__ == '__main__':
             from . import test_ground_unit_resolve, tests_slpp
         except ImportError:
             import test_ground_unit_resolve, tests_slpp
+        except KeyboardInterrupt:
+            pass
         test_file_strings = glob.glob('test*.py')
         module_strings = [str[0:len(str)-3] for str in test_file_strings]
         suites = [unittest.defaultTestLoader.loadTestsFromName(str) for str
