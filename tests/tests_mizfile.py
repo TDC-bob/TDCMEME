@@ -52,6 +52,20 @@ class TestGlobalFunctions(unittest.TestCase):
             m = mizfile.MizFile(os.path.join(root,"INVALID"))
             m.check()
 
+    def test_mizfile_file_does_no_exist(self):
+        with self.assertRaises(Exceptions.FileDoesNotExist):
+            m = mizfile.MizFile(os.path.join(root,"INVALID_CARIBOU"))
+            m.check()
+
+# TODO: check exception when TempDir can't be deleted
+##    def test_mizfile_check_permission_errors(self):
+##        if 'TRAVIS' in os.environ and os.environ['TRAVIS'] == '1':
+##            raise SkipTest()
+##        with self.assertRaises(Exceptions.Error):
+##            m = mizfile.MizFile(os.path.join(root,"BenJee/MiG-29S - Abkhaz Fulcrums.miz"))
+##            m.check().decompact()
+
+
 
 if __name__ == '__main__':
     try:
