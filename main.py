@@ -24,6 +24,19 @@ def main():
     missions_out = os.path.normcase(os.path.join(wk_dir, "missions_out"))
     miz_files_in = (os.path.join(missions_in, file) for file in os.listdir(missions_in) if file[-4:] == ".miz")
     # run tests here
+
+    for f in miz_files_in:
+        with mission.Mission(f) as m:
+            print(m.d['"trig"']['"func"'].keys())
+            m.write()
+            return
+            t = m.key_exists(["trig","func",1])
+            print(t)
+            t = m.key_exists(["trig","conditions",31])
+            print(t)
+            t = m.get_key_value(["trig","conditions",31])
+            print(type(t))
+        return
     '''
     SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
     '''
