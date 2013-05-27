@@ -137,3 +137,52 @@ class _ManagedMission():
 
         return "\n".join(rtn)
 
+    def key_exists(self, key):
+        try:
+            self.get_key_value(key)
+            return True
+        except KeyError:
+            return False
+
+    def set_key(self, key):
+        if not self.key_exists(key):
+            pass
+
+
+    def get_key_value(self,key, base=None):
+        if not base:
+            base = self.d
+##        print("key length: {}".format(len(key)))
+##        print("key: {}".format(key))
+
+        if type(key[0]) == str:
+            key[0] = '"{}"'.format(key[0])
+        else:
+            pass
+##            key[0] = str(key[0])
+
+        if len(key) == 1:
+##            print(base.keys())
+            return base[key[0]]
+        else:
+            search_key = key.pop(0)
+##            print("search_key: {}".format(search_key))
+            return self.get_key_value(key, base=base[search_key])
+
+##
+##        try:
+##            if type(key[0]) == str:
+##                search_key = '"{}"'.format(key[0])
+##            else:
+##                search_key = key[0]
+##            if len(key) == 1:
+##                if type(key[0]) == str:
+##                    return base[search_key]
+##                else:
+##                    return base[search_key]
+##            else:
+##                return self.get_key(key[1:], base=base[search_key])
+##        except KeyError:
+##            raise Exceptions.Error("Clef non trouvée",
+##                "La clef suivante n'a pas été trouvée dans la table de mission: {}".format(search_key), self.logger)
+
