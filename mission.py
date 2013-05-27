@@ -85,6 +85,14 @@ class _ManagedMission():
                 '"descriptionRedTask"','"weather"','"coalition"','"trig"')
 
     @logged
+    def write(self):
+        parser = _slpp.SLPP()
+        raw_text = parser.encode(self.d)
+        with open(os.path.abspath(os.path.join(self.mizfile.temp_dir,"mission")), mode="w", encoding="UTF-8") as out_file:
+            out_file.write(raw_text)
+        self.mizfile.recompact()
+
+    @logged
     def check(self):
         """
         Compare la table de mission à une liste prédeterminée, pour vérifier la
