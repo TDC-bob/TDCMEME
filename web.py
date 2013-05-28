@@ -14,6 +14,7 @@ from _logging._logging import mkLogger
 logger = mkLogger(__name__)
 
 import cherrypy
+
 class HelloWorld():
     def index(self):
         return "Hello BEN !"
@@ -56,7 +57,7 @@ location.href = "%s"
 
 def main():
     options_dict = {
-                    'server.socket_port': 18001,
+                    'server.socket_port': 8087,
                     'server.socket_host': '0.0.0.0',
                     'log.screen': False,
                     'error_page.401': http_error_401_hander,
@@ -67,11 +68,19 @@ def main():
     # monkey patch
     def fake_wait_for_occupied_port(host, port): return
     cherrypy.process.servers.wait_for_occupied_port = fake_wait_for_occupied_port
+    print("starting server")
     cherrypy.server.start()
+    print("waiting")
     cherrypy.server.wait()
+    print("server stopped")
 
 if __name__ == '__main__':
     try:
         main()
+        while True:
+            pass
+        print("finished main()")
     except KeyboardInterrupt:
+        cherrypy.server.stop()
+        print("finished main()")
         pass
