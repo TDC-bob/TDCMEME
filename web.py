@@ -16,7 +16,7 @@ logger = mkLogger(__name__)
 import cherrypy
 class HelloWorld():
     def index(self):
-        return "Hello Caribou!"
+        return "Hello BEN !"
     index.exposed = True
 
 def http_error_401_hander(status, message, traceback, version):
@@ -56,7 +56,7 @@ location.href = "%s"
 
 def main():
     options_dict = {
-                    'server.socket_port': 8081,
+                    'server.socket_port': 18001,
                     'server.socket_host': '0.0.0.0',
                     'log.screen': False,
                     'error_page.401': http_error_401_hander,
@@ -64,6 +64,9 @@ def main():
     }
     cherrypy.config.update(options_dict)
     app = cherrypy.tree.mount(HelloWorld(), "/")#, conf)
+    # monkey patch
+    def fake_wait_for_occupied_port(host, port): return
+    cherrypy.process.servers.wait_for_occupied_port = fake_wait_for_occupied_port
     cherrypy.server.start()
     cherrypy.server.wait()
 
