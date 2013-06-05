@@ -19,32 +19,33 @@ logger = mkLogger(__name__, logging.INFO )
 import Exceptions
 
 def main():
-    wk_dir = os.getcwd()
-    missions_in = os.path.normcase(os.path.join(wk_dir,"missions_in"))
-    missions_out = os.path.normcase(os.path.join(wk_dir, "missions_out"))
-    miz_files_in = (os.path.join(missions_in, file) for file in os.listdir(missions_in) if file[-4:] == ".miz")
-    # run tests here
+    import cherrypy
+    # wk_dir = os.getcwd()
+    # missions_in = os.path.normcase(os.path.join(wk_dir,"missions_in"))
+    # missions_out = os.path.normcase(os.path.join(wk_dir, "missions_out"))
+    # miz_files_in = (os.path.join(missions_in, file) for file in os.listdir(missions_in) if file[-4:] == ".miz")
+    # # run tests here
 
-    for f in miz_files_in:
-        with mission.Mission(f) as m:
-            print(m.d['"trig"']['"func"'].keys())
-            m.write()
-            return
-            t = m.key_exists(["trig","func",1])
-            print(t)
-            t = m.key_exists(["trig","conditions",31])
-            print(t)
-            t = m.get_key_value(["trig","conditions",31])
-            print(type(t))
-        return
-    '''
-    SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
-    '''
-    SLPP_test(os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\mission")),
-            os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\output")))
-
-    # one test to rule them all:
-    run_on_all_files(generate_context,miz_files_in)
+    # for f in miz_files_in:
+    #     with mission.Mission(f) as m:
+    #         print(m.d['"trig"']['"func"'].keys())
+    #         m.write()
+    #         return
+    #         t = m.key_exists(["trig","func",1])
+    #         print(t)
+    #         t = m.key_exists(["trig","conditions",31])
+    #         print(t)
+    #         t = m.get_key_value(["trig","conditions",31])
+    #         print(type(t))
+    #     return
+    # '''
+    # SLPP test: in- & output of SLPP parsing should be *EXACTLY* the same
+    # '''
+    # SLPP_test(os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\mission")),
+    #         os.path.normcase(os.path.join(os.getcwd(),"tests/slpp tests\output")))
+    #
+    # # one test to rule them all:
+    # run_on_all_files(generate_context,miz_files_in)
 
 def SLPP_test(file_in, file_out):
     '''
